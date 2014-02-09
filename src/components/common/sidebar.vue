@@ -1,5 +1,5 @@
 <template>
-  <Menu :active-name="thisMenu.key" width="auto" :open-names="['index','platformSetting','brandManage','financialManage','userManage']"  @on-select="createTab" style="height: 100%">
+  <Menu theme="dark" :active-name="thisMenu.key" width="auto" :open-names="['index','platformSetting','brandManage','financialManage','userManage']"  @on-select="createTab" style="height: 100%">
     <Submenu name="index" v-for="item in mainMenu[thisModel]">
       <template slot="title">
         <Icon type="ios-navigate"></Icon>
@@ -148,6 +148,70 @@
                         maVoucherReport:mainMenuConfig['maVoucherReport']
                       }
                     },
+                  },
+                  wms:{
+                    wmsIndex:{
+                      key:"wmsIndex",
+                      title:"主页",
+                      childmenu:{
+                        wmsDashboard:mainMenuConfig['maDashboard'],
+                        wmsBigScreen:mainMenuConfig['maBigScreen']
+                      }
+                    },
+                    wmsSet:{
+                      key:"wmsSet",
+                      title:"仓库配置",
+                      childmenu:{
+                        wmsSetList:mainMenuConfig['wmsSetList'],
+                        wmsSetArea:mainMenuConfig['wmsSetArea'],
+                        wmsSetLocation:mainMenuConfig['wmsSetLocation'],
+                        wmsSetLocationType:mainMenuConfig['wmsSetLocationType']
+                      }
+                    },
+                    wmsManage:{
+                      key:"wmsManage",
+                      title:"库内作业",
+                      childmenu:{
+                        wmsManageInventory:mainMenuConfig['wmsManageInventory'],
+                        wmsManageRepair:mainMenuConfig['wmsManageRepair'],
+                        wmsManageAllot:mainMenuConfig['wmsManageAllot'],
+                        wmsManageMove:mainMenuConfig['wmsManageMove']
+                      }
+                    },
+                    wmsInput:{
+                      key:"wmsInput",
+                      title:"验货入库",
+                      childmenu:{
+                        wmsInputPurchase:mainMenuConfig['wmsInputPurchase'],
+                        wmsInputReturn:mainMenuConfig['wmsInputReturn'],
+                        wmsInputAllot:mainMenuConfig['wmsInputAllot'],
+                        wmsInputMove:mainMenuConfig['wmsInputMove'],
+                        wmsInputOther:mainMenuConfig['wmsInputOther']
+                      }
+                    },
+                    wmsOutput:{
+                      key:"wmsInput",
+                      title:"销货出库",
+                      childmenu:{
+                        wmsOutputReplenish:mainMenuConfig['wmsOutputReplenish'],
+                        wmsOutputWave:mainMenuConfig['wmsOutputWave'],
+                        wmsOutputPick:mainMenuConfig['wmsOutputPick'],
+                        wmsOutputPack:mainMenuConfig['wmsOutputPack'],
+                        wmsOutputDo:mainMenuConfig['wmsOutputDo'],
+                        wmsOutputList:mainMenuConfig['wmsOutputList']
+                      }
+                    },
+                    wmsStrategy:{
+                      key:"wmsInput",
+                      title:"仓内策略",
+                      childmenu:{
+                        wmsStrategyWave:mainMenuConfig['wmsStrategyWave'],
+                        wmsStrategyWork:mainMenuConfig['wmsStrategyWork'],
+                        wmsStrategyInventory:mainMenuConfig['wmsStrategyInventory'],
+                        wmsStrategyBatch:mainMenuConfig['wmsStrategyBatch'],
+                        wmsStrategyArea:mainMenuConfig['wmsStrategyArea']
+                      }
+                    }
                   }
                 }
             }

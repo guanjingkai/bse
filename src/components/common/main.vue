@@ -2,7 +2,7 @@
 <div>
 <Row>
   <Col>
-    <ModelItem iconfont="BSE 商业服务专家" font="Business Service Expert"></ModelItem>
+    <ModelItem iconfont="新零售管理系统BSE" font="Business Service Expert"></ModelItem>
   </Col>
 </Row>
 <Row>
@@ -10,7 +10,7 @@
       <ModelItem iconfont="MM 物料管理" font="Materials Management" modelName="mmcreateMaterial"></ModelItem>
     </Col>
     <Col span='6'>
-      <ModelItem iconfont="WMS 仓储管理" font="Warehouse Management"></ModelItem>
+      <ModelItem iconfont="WMS 仓储管理" font="Warehouse Management"  modelName="wmsSetList"></ModelItem>
     </Col>
     <Col span='6'>
       <ModelItem iconfont="OMS 订单管理" font="Order Management"></ModelItem>

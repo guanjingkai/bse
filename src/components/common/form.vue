@@ -8,7 +8,10 @@
       <Form-item  :label="item.title" :prop="item.key">
         <Alert v-if="item.type == 'formGroupTitle'" style="margin-left:-100px;">{{item.value}}</Alert>
         <p v-if="item.type == 'kong'" style="display:block;height:33px;"></p>
-        <Input v-if="item.type == 'input'" v-model="thisFormValidate[item.key]" :placeholder="'请输入'+item.title"  style="max-width:360px;"></Input>
+        <Input v-if="item.type == 'input'" v-model="thisFormValidate[item.key]" :placeholder="'请输入'+item.title"  style="max-width:360px;">
+          <span v-if="item.prepend" slot="prepend">{{item.prepend}}</span>
+          <span v-if="item.append" slot="append">{{item.append}}</span>
+        </Input>
         <Input v-if="item.type == 'textarea'"  v-model="thisFormValidate[item.key]" type="textarea" :autosize="{minRows: 2,maxRows: 5}" :placeholder="'请输入'+item.title"></Input>
         <Select v-if="item.type == 'select'" v-model="thisFormValidate[item.key]":placeholder="'请选择'+item.title" :placement="item.hasOwnProperty('placement') ? item.placement :'bottom'"  style="max-width:360px;">
           <Option v-for="(option,key) in item.value" :value="option.key">{{option.value}}</Option>
@@ -37,7 +40,7 @@
           <span slot="open">开启</span>
           <span slot="close">关闭</span>
         </i-switch>
-        <Cascader  v-if="item.type == 'cascader'" v-model="thisFormValidate[item.key]" :data="item.value" trigger="hover"></Cascader>
+        <Cascader  v-if="item.type == 'cascader'" v-model="thisFormValidate[item.key]"  :placeholder="'请选择'+item.title" :data="item.value" trigger="hover"></Cascader>
         <UploadImg v-if="item.type == 'upload-img'" :default-list="thisFormValidate[item.key]" :component-key="item.key" v-on:updateImgList="setUploadImg"></UploadImg>
         <Upload v-if="item.type == 'upload-files'"
                 multiple
@@ -54,7 +57,7 @@
       </Form-item>
       </Col>
       <Col span="24">
-      <Form-item>
+      <Form-item v-if="formAction">
         <div class="actionButtons">
           <Button type="success" @click="handleSubmit('thisFormValidate')">保存关闭</Button>
           <Button type="primary" v-if="this.type == 'own'" @click="handleSubmit('thisFormValidate')">保存新增</Button>
@@ -110,6 +113,10 @@
           },formValidate: {
               default: function () {
                   return {}
+              }
+          },formAction: {
+              default: function () {
+                  return true
               }
           },gridSpan: {
               default: function () {

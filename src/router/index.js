@@ -78,6 +78,50 @@ export default new Router({
             }]
         },
         {
+            path:'/wms',
+            name: 'Layout',
+            component: require('../components/common/layout.vue'),
+            children:[
+                {
+                    path: 'set_list',
+                    name: 'setList',
+                    component: require('../components/wms/setList.vue')
+                },{
+                    path: 'set_area',
+                    name: 'setArea',
+                    component: require('../components/wms/setArea.vue')
+                },{
+                    path: 'set_location',
+                    name: 'setArea',
+                    component: require('../components/wms/setLocation.vue')
+                },{
+                    path: 'set_location_type',
+                    name: 'setArea',
+                    component: require('../components/wms/setLocationType.vue')
+                },
+                {
+                    path: 'output_replenish',
+                    name: 'setList',
+                    component: require('../components/wms/outputReplenish.vue')
+                },
+                {
+                    path: 'output_wave',
+                    name: 'setList',
+                    component: require('../components/wms/outputWave.vue')
+                },
+                {
+                    path: 'output_pick',
+                    name: 'setList',
+                    component: require('../components/wms/outputPick.vue')
+                },
+                {
+                    path: 'strategy_wave',
+                    name: 'setList',
+                    component: require('../components/wms/strategyWave.vue')
+                }
+            ]
+        },
+        {
             path:'es',
             name: 'Layout',
             component: require('../components/common/layout.vue'),

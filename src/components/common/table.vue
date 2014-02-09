@@ -13,7 +13,7 @@
               <span slot="open">开启</span>
               <span slot="close">关闭</span>
             </i-switch>
-            <Cascader  v-if="item.type == 'cascader'" v-model="item.value" :data="item.data" trigger="hover"></Cascader>
+            <Cascader  v-if="item.type == 'cascader'" v-model="item.value"  :placeholder="'请选择'+item.title" :data="item.data" trigger="hover" :style="{'width':item.hasOwnProperty('width')?item.width>0?item.width+'px':'150px':'150px'}"></Cascader>
           </Col>
           <Col class-name="table-col" v-if="thisSearchConfig.toString() != arrayNull.toString()">
             <Button type="primary" icon="ios-search">查询</Button>
