@@ -19,6 +19,11 @@ export default new Router({
             path: '/login',
             name: 'Login',
             component: require('../components/common/login.vue')
+        },
+        {
+            path: '/layout',
+            name: 'Layout',
+            component: require('../components/common/layout.vue')
         }
     ]
 })
