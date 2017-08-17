@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
-
-
+import createMaterialBasic from '../components/mm/mapper/createMaterial_basic'
 import client from './client'
 /*使用Vuex*/
 Vue.use(Vuex)
@@ -10,60 +8,60 @@ Vue.use(Vuex)
 
 //用户相关状态管理
 const userModule = {
-  state:{
-    token:"",
-    uid:""
-  },
-  mutations:{
+    state: {
+        token: "",
+        uid: ""
+    },
+    mutations: {
 
-  },
-  actions:{
+    },
+    actions: {
 
-  },
-  getters:{
+    },
+    getters: {
 
-  }
+    }
 }
 const tabModule = {
-  state:{
-    tabList:{},
-    pageList:{}
-  },
-  mutations:{
-    createTab(){
+    state: {
+        tabList: {},
+        pageList: {}
+    },
+    mutations: {
+        createTab() {
+
+        }
+    },
+    actions: {
+
+    },
+    getters: {
 
     }
-  },
-  actions:{
-
-  },
-  getters:{
-
-  }
 }
 const modelModule = {
-  state:{
-    
-  },
-  mutations:{
-    createTab(){
+    state: {
+        createMaterialBasic: createMaterialBasic
+    },
+    mutations: {
+        createTab() {
+
+        }
+    },
+    actions: {
+
+    },
+    getters: {
 
     }
-  },
-  actions:{
-
-  },
-  getters:{
-
-  }
 }
 const store = new Vuex.Store({
-  modules: {
-    user: userModule,
-    tab: tabModule,
-    model: modelModule,
-    client:client
-  }
-})
-/*将store导出*/
-export default  store;
+        modules: {
+            user: userModule,
+            tab: tabModule,
+            model: modelModule,
+            client: client
+        }
+    })
+    /*将store导出*/
+export default store;

@@ -1,49 +1,11 @@
 <template>
   <Menu active-name="1-2" width="auto" :open-names="['index','platformSetting','brandManage','financialManage','userManage']"  @on-select="createTab">
-    <Submenu name="index">
+    <Submenu name="index" v-for="item in mainMenu.mm">
       <template slot="title">
         <Icon type="ios-navigate"></Icon>
-        主控台
+        {{item.title}}
       </template>
-      <Menu-item name="index">首页</Menu-item>
-    </Submenu>
-    <Submenu name="platformSetting">
-      <template slot="title">
-        <Icon type="ios-navigate"></Icon>
-        平台设置
-      </template>
-      <Menu-item name="basicSetting">基础设置</Menu-item>
-      <Menu-item name="ndustrySetting">行业设置</Menu-item>
-      <Menu-item name="commoditySetting">商品分类</Menu-item>
-      <Menu-item name="propertySetting">属性设置</Menu-item>
-      <Menu-item name="notificationSetting">通知模板</Menu-item>
-    </Submenu>
-    <Submenu name="brandManage">
-      <template slot="title">
-        <Icon type="ios-analytics"></Icon>
-        品牌管理
-      </template>
-      <Menu-item name="brandList">品牌列表</Menu-item>
-      <Menu-item name="brandUnaudited">待审核品牌</Menu-item>
-    </Submenu>
-    <Submenu name="financialManage">
-      <template slot="title">
-        <Icon type="ios-analytics"></Icon>
-        财务管理
-      </template>
-      <Menu-item name="settlement">结算中心</Menu-item>
-      <Menu-item name="9-4">异常订单</Menu-item>
-      <Menu-item name="9-5">支付设置</Menu-item>
-    </Submenu>
-    <Submenu name="userManage">
-      <template slot="title">
-        <Icon type="ios-analytics"></Icon>
-        用户管理
-      </template>
-      <Menu-item name="userList">用户列表</Menu-item>
-      <Menu-item name="userGroup">用户组</Menu-item>
-      <Menu-item name="role">角色</Menu-item>
-      <Menu-item name="power">节点</Menu-item>
+      <Menu-item name="index" v-for="item2 in item.childmenu">{{item2.title}}</Menu-item>
     </Submenu>
   </Menu>
 </template>
@@ -54,7 +16,109 @@
     export default {
       data () {
             return {
-                theme2: 'light'
+                theme2: 'light',
+                mainMenu:{
+                  mm:{
+                    materialManager:{
+                      key:"materialManager",
+                      title:"物料管理",
+                      childmenu:{
+                        createMaterial:{
+                          key:"",
+                          title:"创建物料",
+                        },
+                        materialList:{
+                          key:"",
+                          title:"物料列表",
+                        },
+                        batchManagement:{
+                          key:"",
+                          title:"批次管理",
+                        }
+                      }
+                    },
+                    supplier:{
+                      key:"supplier",
+                      title:"供应商",
+                      childmenu:{
+                        createSupplier:{
+                          key:"createSupplier",
+                          title:"创建供应商",
+                        },
+                        supplierList:{
+                          key:"",
+                          title:"供应商列表",
+                        }
+                      }
+                    },
+                    purchaselManager:{
+                      key:"purchaselManager",
+                      title:"采购管理",
+                      childmenu:{
+                        createMaterial:{
+                          key:"",
+                          title:"采购申请",
+                        },
+                        materialList:{
+                          key:"",
+                          title:"采购订单创建",
+                        },
+                        batchManagement:{
+                          key:"",
+                          title:"采购记录",
+                        },
+                        batchManagement:{
+                          key:"",
+                          title:"询价报价",
+                        }
+                      }
+                    },
+                    inventoryManager:{
+                      key:"inventoryManager",
+                      title:"库存管理",
+                      childmenu:{
+                        createMaterial:{
+                          key:"",
+                          title:"入库",
+                        },
+                        materialList:{
+                          key:"",
+                          title:"出库",
+                        },
+                        batchManagement:{
+                          key:"",
+                          title:"转储",
+                        },
+                        batchManagement:{
+                          key:"",
+                          title:"盘点",
+                        },
+                        batchManagement:{
+                          key:"",
+                          title:"转储",
+                        }
+                      }
+                    },
+                    warehouselManager:{
+                      key:"warehouselManager",
+                      title:"仓库管理",
+                      childmenu:{
+                        createMaterial:{
+                          key:"",
+                          title:"创建物料",
+                        },
+                        materialList:{
+                          key:"",
+                          title:"物料列表",
+                        },
+                        batchManagement:{
+                          key:"",
+                          title:"批次管理",
+                        }
+                      }
+                    }
+                  }
+                }
             }
       },
       methods:{

@@ -51,8 +51,7 @@
         </i-col>
         <i-col class-name="main-right">
           <div class="layout-content-main">
-            
-            <component :is="tabPage"></component>
+            <router-view></router-view>
           </div>
         </i-col>
       </Row>
@@ -90,7 +89,7 @@
   }
   .layout-logo img{
     height: 36px;
-    margin-top: 8px; 
+    margin-top: 8px;
     display: inline-block;
     float: left;
   }
