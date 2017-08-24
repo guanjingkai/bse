@@ -51,7 +51,9 @@
         </i-col>
         <i-col class-name="main-right">
           <div class="layout-content-main">
-            <router-view></router-view>
+            <keep-alive>
+              <router-view></router-view>
+            </keep-alive>
           </div>
         </i-col>
       </Row>

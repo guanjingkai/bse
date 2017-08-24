@@ -4,14 +4,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vued from 'vued'
-import Vuex from 'vuex'
+import axios from 'axios'
+import Vuex from 'iview'
 import store from './store/store'
-import 'vued//dist/styles/vued.css'
+import 'iview//dist/styles/iview.css'
 
 Vue.config.productionTip = false
 Vue.use(Vued)
 Vue.use(Vuex)
 Vue.prototype.router = router;
+Vue.prototype.$http = axios
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
