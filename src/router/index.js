@@ -20,18 +20,22 @@ export default new Router({
             name: 'Login',
             component: require('../components/common/login.vue')
         },
-      {
-        path: '/mm',
-        name: 'Layout',
-        component: require('../components/common/layout.vue'),
-        children:[
-          {
-            path: 'create_material',
-            name: 'createMaterial',
-            component: require('../components/mm/createMaterial.vue')
-          }
-        ]
-      },
+        {
+            path: '/mm',
+            name: 'Layout',
+            component: require('../components/common/layout.vue'),
+            children: [{
+                    path: 'create_material',
+                    name: 'createMaterial',
+                    component: require('../components/mm/createMaterial.vue')
+                },
+                {
+                    path: 'material_list',
+                    name: 'materialList',
+                    component: require('../components/mm/materialList.vue')
+                }
+            ]
+        },
 
 
     ]

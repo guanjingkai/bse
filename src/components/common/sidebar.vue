@@ -5,7 +5,7 @@
         <Icon type="ios-navigate"></Icon>
         {{item.title}}
       </template>
-      <Menu-item name="index" v-for="item2 in item.childmenu">{{item2.title}}</Menu-item>
+      <Menu-item :name="item2.key" v-for="item2 in item.childmenu">{{item2.title}}</Menu-item>
     </Submenu>
   </Menu>
 </template>
@@ -13,6 +13,7 @@
 
 </style>
 <script>
+    import mainMenuConfig from '../../config/main_menu.js'
     export default {
       data () {
             return {
@@ -23,14 +24,8 @@
                       key:"materialManager",
                       title:"物料管理",
                       childmenu:{
-                        createMaterial:{
-                          key:"",
-                          title:"创建物料",
-                        },
-                        materialList:{
-                          key:"",
-                          title:"物料列表",
-                        },
+                        createMaterial:mainMenuConfig['createMaterial'],
+                        materialList:mainMenuConfig['materialList'],
                         batchManagement:{
                           key:"",
                           title:"批次管理",
@@ -125,10 +120,12 @@
         getMenu(){
 
         },
-        createTab(name){
+        createTab(item){
           const _self = this;
-          console.log(_self.$store.state.model.menu[name].path);
-          this.router.push({ path: _self.$store.state.model.menu[name].path })
+          //console.log(_self.$store.state.model.menu[name].path);
+          //this.router.push({ path: _self.$store.state.model.menu[name].path })
+          console.log(item);
+          _self.router.push({path:mainMenuConfig[item].path});
         }
       }
     }

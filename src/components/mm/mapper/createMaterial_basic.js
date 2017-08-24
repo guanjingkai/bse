@@ -1,75 +1,131 @@
 export default {
     self: this,
+    gridSpan: 12,
     parameter: {
-        brandName: {
-            key: "brandName",
-            title: "品牌名称",
+        group1: {
+            key: "group1",
+            title: "",
+            type: "formGroupTitle",
+            value: "基本信息"
+        },
+        materialName: {
+            key: "materialName",
+            title: "物料名称",
             type: "input",
-            rule: [{ required: true, message: '姓名不能为空', trigger: 'blur' }]
+            rule: [{ required: true, message: '请选填写联系人', trigger: 'blur' }]
+        },
+        materialNumber: {
+            key: "materialNumber",
+            title: "物料编号",
+            type: "input",
+            rule: [{ required: true, message: '请选填写联系人', trigger: 'blur' }]
+        },
+        materialType: {
+            key: "materialType",
+            title: "物料类型",
+            type: "input",
+            rule: [{ required: true, message: '请选填写联系人', trigger: 'blur' }]
+        },
+        materialGroup: {
+            key: "materialGroup",
+            title: "物料组",
+            type: "input",
+            rule: [{ required: true, message: '请选填写联系人', trigger: 'blur' }]
+        },
+        group2: {
+            key: "group2",
+            title: "",
+            type: "formGroupTitle",
+            value: "量纲"
         },
         logo: {
             key: "logo",
-            title: "Logo",
+            title: "物料图片",
             type: "upload-img",
             value: { defaultList: [], imgName: '', visible: false, uploadList: [] },
             rule: [{ required: true, message: '请选上传图片', trigger: 'blur' }]
 
         },
-        industry: {
-            key: "industry",
-            title: "行业",
-            type: "select",
-            value: [{ key: "canyin", value: "餐饮" }, { key: "ertong", value: "儿童" }, { key: "tiyu", value: "体育" }, { key: "wenchuang", value: "文创" }, { key: "lingshou", value: "零售" }],
-            rule: [{ required: true, message: '请选选择行业', trigger: 'change' }]
-        },
-        contacts: {
-            key: "contacts",
-            title: "联系人",
+        maozhong: {
+            key: "maozhong",
+            title: "毛重",
             type: "input",
             rule: [{ required: true, message: '请选填写联系人', trigger: 'blur' }]
         },
-        tel: {
-            key: "tel",
-            title: "联系方式",
+        jingzhong: {
+            key: "jingzhong",
+            title: "净重",
             type: "input",
-            rule: [{ required: true, message: '请选填写联系方式', trigger: 'blur' }]
+            rule: [{ required: true, message: '请选填写联系人', trigger: 'blur' }]
         },
-        mail: {
-            key: "mail",
-            title: "邮箱",
+        zhongliangdanwei: {
+            key: "zhongliangdanwei",
+            title: "重量单位",
+            type: "select",
+            value: [{ key: "canyin", value: "千克" }, { key: "ertong", value: "吨" }, { key: "tiyu", value: "克" }, { key: "wenchuang", value: "斤" }, { key: "lingshou", value: "两" }],
+            rule: [{ required: true, message: '请选选择行业', trigger: 'change' }]
+        },
+        kong1: {
+            key: "kong1",
+            title: "",
+            type: "kong"
+        },
+        tiji: {
+            key: "tiji",
+            title: "体积",
             type: "input",
-            rule: [{ required: true, message: '邮箱不能为空', trigger: 'blur' }, { type: 'email', message: '邮箱格式不正确', trigger: 'blur' }]
+            rule: [{ required: true, message: '请选填写联系人', trigger: 'blur' }]
         },
-        city: {
-            key: "city",
-            title: "城市",
-            type: "cascader",
-            value: [{ value: 'beijing', label: '北京', children: [{ value: 'gugong', label: '故宫' }, { value: 'tiantan', label: '天坛' }, { value: 'wangfujing', label: '王府井' }] }, { value: 'jiangsu', label: '江苏', children: [{ value: 'nanjing', label: '南京', children: [{ value: 'fuzimiao', label: '夫子庙', }] }, { value: 'suzhou', label: '苏州', children: [{ value: 'zhuozhengyuan', label: '拙政园', }, { value: 'shizilin', label: '狮子林', }] }], }],
-            rule: [{ required: true, message: '请选择城市', trigger: 'change' }]
+        tijidanwei: {
+            key: "tijidanwei",
+            title: "体积单位",
+            type: "select",
+            value: [{ key: "canyin", value: "千克" }, { key: "ertong", value: "吨" }, { key: "tiyu", value: "克" }, { key: "wenchuang", value: "斤" }, { key: "lingshou", value: "两" }],
+            rule: [{ required: true, message: '请选选择行业', trigger: 'change' }]
         },
-        gender: {
-            key: "gender",
-            title: "资金归集",
-            type: "radio",
-            value: [{ key: "male", value: "是" }, { key: "female", value: "否" }],
-            rule: [{ required: true, message: '请选择资金归集方式', trigger: 'change' }]
-        },
-        company: {
-            key: "company",
-            title: "公司名称",
+        ean: {
+            key: "ean",
+            title: "国际条码",
             type: "input",
-            rule: [{ required: true, message: '请填写公司名称', trigger: 'blur' }]
+            rule: [{ required: true, message: '请选填写联系人', trigger: 'blur' }]
         },
-        tel: {
-            key: "tel",
-            title: "信用代码",
+        eanType: {
+            key: "eanType",
+            title: "条码类型",
+            type: "select",
+            value: [{ key: "canyin", value: "EAN8" }, { key: "ertong", value: "EAN12" }, { key: "tiyu", value: "克" }, { key: "wenchuang", value: "斤" }, { key: "lingshou", value: "两" }],
+            rule: [{ required: true, message: '请选选择行业', trigger: 'change' }]
+        },
+        group3: {
+            key: "group3",
+            title: "",
+            type: "formGroupTitle",
+            value: "包装物料数据"
+        },
+        baozhuang: {
+            key: "baozhuang",
+            title: "包装物料",
+            type: "select",
+            value: [{ key: "canyin", value: "EAN8" }, { key: "ertong", value: "EAN12" }, { key: "tiyu", value: "克" }, { key: "wenchuang", value: "斤" }, { key: "lingshou", value: "两" }],
+            rule: [{ required: true, message: '请选选择行业', trigger: 'change' }]
+        },
+        baozhuangnum: {
+            key: "baozhuangnum",
+            title: "包装数量",
             type: "input",
-            rule: [{ required: true, message: '请选填写信用代码', trigger: 'blur' }]
+            rule: [{ required: true, message: '请选填写联系人', trigger: 'blur' }]
+        },
+        group4: {
+            key: "group4",
+            title: "",
+            type: "formGroupTitle",
+            value: "基本数据"
         },
         desc: {
             key: "desc",
             title: "介绍",
-            type: "textarea",
+            type: "md-edit",
+            gridSpan: 24,
             rule: [{ required: true, message: '请选填写品牌介绍', trigger: 'blur' }]
         }
     },

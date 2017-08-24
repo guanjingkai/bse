@@ -1,11 +1,16 @@
 <template>
   <Row>
     <Col span="24">
-    <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80" style="max-width: 450px">
-      <Form-item v-for="(item,key) in parameter" :label="item.title" :prop="item.key">
+    
+    <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="100" style="max-width:900px;">
+    <Row>
+      <Col v-for="(item,key) in parameter" :span="getSpan(item)">
+      <Form-item  :label="item.title" :prop="item.key">
+        <Alert v-if="item.type == 'formGroupTitle'" style="margin-left:-100px;">{{item.value}}</Alert>  
+        <p v-if="item.type == 'kong'" style="display:block;height:33px;"></p>    
         <Input v-if="item.type == 'input'" v-model="formValidate[item.key]" :placeholder="'请输入'+item.title"></Input>
         <Input v-if="item.type == 'textarea'"  v-model="formValidate[item.key]" type="textarea" :autosize="{minRows: 2,maxRows: 5}" :placeholder="'请输入'+item.title"></Input>
-        <Select v-if="item.type == 'select'" v-model="formValidate[item.key]":placeholder="'请选择'+item.title">
+        <Select v-if="item.type == 'select'" v-model="formValidate[item.key]":placeholder="'请选择'+item.title" :placement="item.hasOwnProperty('placement') ? item.placement :'bottom'">
           <Option v-for="(option,key) in item.value" :value="option.key">{{option.value}}</Option>
         </Select>
         <Radio-group v-if="item.type == 'radio'" v-model="formValidate[item.key]">
@@ -42,12 +47,20 @@
           <Button type="ghost" icon="ios-cloud-upload-outline">上传文件</Button>
         </Upload>
         <BaiduMap v-if="item.type == 'bmap-edit'" :component-key="item.key"></BaiduMap>
+        <MdEditor v-if="item.type == 'md-edit'"></MdEditor>
+      
       </Form-item>
+      </Col>
+      <Col span="24">
       <Form-item>
         <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
         <Button type="ghost" @click="handleReset('formValidate')" style="margin-left: 8px">重置</Button>
       </Form-item>
+      </Col>
+    </Row>  
     </Form>
+    
+    
     </Col>
   </Row>
 </template>
@@ -59,6 +72,7 @@
       return {
         api:{},
         formModel:'',
+        gridSpan:'',
         fid:'',
         parameter:{},
         formValidate:{},
@@ -99,6 +113,7 @@
         const componentConfig = this.$store.state.model[model];
         this.parameter        = componentConfig.parameter;
         this.formValidate     = componentConfig.formValidate;
+        this.gridSpan         = componentConfig.gridSpan;
         this.getRule();
         console.log(this.ruleValidate);
       },
@@ -113,6 +128,19 @@
       setUploadImg(imgList){
         console.log(imgList);
         this.formValidate[imgList.key] = imgList.data;
+      },
+      getSpan(item){
+        var thisSpan;
+        if(item.hasOwnProperty('gridSpan')){
+          return item.gridSpan;
+        }else{
+          if(item.type == 'formGroupTitle' || item.type == 'upload-img'){
+            return 24;
+          }else{
+            return this.gridSpan;
+          }
+        }
+        
       }
     },
     watch: {
@@ -126,3 +154,8 @@
     }
   }
 </script>
+<style>
+.ued-form-item-content{
+
+}
+</style>

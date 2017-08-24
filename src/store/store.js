@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createMaterialBasic from '../components/mm/mapper/createMaterial_basic'
+import createMaterialInit from '../components/mm/mapper/createMaterial_init'
+import createMaterialPlant from '../components/mm/mapper/createMaterial_plant'
 import client from './client'
 /*使用Vuex*/
 Vue.use(Vuex)
@@ -41,7 +43,9 @@ const tabModule = {
 }
 const modelModule = {
     state: {
-        createMaterialBasic: createMaterialBasic
+        createMaterialBasic: createMaterialBasic,
+        createMaterialInit: createMaterialInit,
+        createMaterialPlant: createMaterialPlant
     },
     mutations: {
         createTab() {

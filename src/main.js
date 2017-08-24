@@ -11,11 +11,12 @@ import 'vued//dist/styles/vued.css'
 Vue.config.productionTip = false
 Vue.use(Vued)
 Vue.use(Vuex)
-    /* eslint-disable no-new */
+Vue.prototype.router = router;
+/* eslint-disable no-new */
 new Vue({
     el: '#app',
     router,
-    store:store,
+    store: store,
     template: '<App/>',
     components: { App }
 })
