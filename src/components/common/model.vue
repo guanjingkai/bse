@@ -1,6 +1,6 @@
 <template>
 <Row>
-    <div class="model">
+    <div class="model" @click="goModel()">
       <div class="iconfont">{{iconfont}}</div>
       <div class="font">{{font}}</div>
     </div>
@@ -28,6 +28,7 @@
 </style>
 
 <script>
+import mainMenuConfig from '../../config/main_menu.js'
 export default {
   name: 'main',
   props:{
@@ -36,11 +37,19 @@ export default {
     },
     font: {
       type: String
+    },
+    modelName: {
+      type: String,
     }
   },
   data () {
     return {
       
+    }
+  },
+  methods:{
+    goModel(){
+      this.router.push({path:mainMenuConfig[this.$props.modelName].path});
     }
   }
 }

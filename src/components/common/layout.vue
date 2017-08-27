@@ -4,7 +4,7 @@
       <Row type="flex">
         <i-col class-name="main-left" style="overflow:hidden">
           <div class="layout-logo">
-            <img src="/static/images/logo.png">
+            <img src="static/images/logo.png">
           </div>
         </i-col>;
         <i-col span="19">
@@ -68,10 +68,33 @@
     components: {
       'sidebar':Hello
     },
+    mounted:function () {
+      this.init();
+    },
     methods:{
       aaa() {
         //console.log(TabPage);
-      }
+      },
+      init(){
+      const _self = this;
+      this.$store.state.client.browser = navigator.appCodeName;
+      this.$store.state.client.version = navigator.appVersion;
+      this.$store.state.client.cookieEnabled = navigator.cookieEnabled;
+      this.$store.state.client.platform = navigator.platform;
+      this.$store.state.client.ua = navigator.userAgent;
+      this.$store.state.client.language = navigator.language;
+      this.$store.state.client.width = document.documentElement.clientWidth;
+      this.$store.state.client.height = document.documentElement.clientHeight;
+      document.getElementsByTagName('body')[0].style.height = this.$store.state.client.height + 'px';
+      document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+      document.getElementById('layout-main').style.height = (this.$store.state.client.height - 150) + 'px';
+      window.onresize=function(){
+        _self.$store.state.client.width = document.documentElement.clientWidth;
+        _self.$store.state.client.height = document.documentElement.clientHeight;
+        document.getElementsByTagName('body')[0].style.height = _self.$store.state.client.height + 'px';
+        document.getElementById('layout-main').style.height = (_self.$store.state.client.height - 150) + 'px';
+      };
+    }
     }
   }
 </script>

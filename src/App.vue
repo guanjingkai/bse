@@ -20,6 +20,7 @@ export default {
       this.$store.state.client.width = document.documentElement.clientWidth;
       this.$store.state.client.height = document.documentElement.clientHeight;
       document.getElementsByTagName('body')[0].style.height = this.$store.state.client.height + 'px';
+      document.getElementsByTagName('body')[0].style.overflow = 'hidden';
       document.getElementById('layout-main').style.height = (this.$store.state.client.height - 150) + 'px';
       window.onresize=function(){
         _self.$store.state.client.width = document.documentElement.clientWidth;
