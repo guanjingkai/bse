@@ -115,10 +115,12 @@ export default {
     //   });
       this.$http.get(_self.thisApi.url).then(response => {
         // success callback
-        _self.thisTableData = response.list;
+        _self.thisTableData = response.data;
+        console.log('请求成功');
         console.log(response);
         }, response => {
-    // error callback
+          // error callback
+          console.log('请求失败');
         })
       //_self.tableData = [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]
     },
@@ -146,7 +148,7 @@ export default {
                         data: this.data7.filter((data, index) => index < 4)
                     });
                 }
-            } 
+            }
   },
   watch: {
     '$route'(to, from) {

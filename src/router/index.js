@@ -36,7 +36,19 @@ export default new Router({
                 }
             ]
         },
-
-
+        {
+            path: '/ma',
+            name: 'Layout',
+            component: require('../components/common/layout.vue'),
+            children: [{
+                path: 'voucher_list',
+                name: 'voucherList',
+                component: require('../components/ma/voucherList.vue')
+            },{
+                path: 'create_voucher',
+                name: 'createVoucher',
+                component: require('../components/ma/createVoucher.vue')
+            }]
+        }
     ]
 })

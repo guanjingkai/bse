@@ -1,6 +1,6 @@
 <template>
   <Menu active-name="1-2" width="auto" :open-names="['index','platformSetting','brandManage','financialManage','userManage']"  @on-select="createTab">
-    <Submenu name="index" v-for="item in mainMenu.mm">
+    <Submenu name="index" v-for="item in mainMenu[thisModel]">
       <template slot="title">
         <Icon type="ios-navigate"></Icon>
         {{item.title}}
@@ -18,8 +18,17 @@
       data () {
             return {
                 theme2: 'light',
+                thisModel:this.$route.matched[0].path.substr(1),
                 mainMenu:{
                   mm:{
+                    mmIndex:{
+                      key:"mmIndex",
+                      title:"主页",
+                      childmenu:{
+                        mmDashboard:mainMenuConfig['mmDashboard'],
+                        mmBigScreen:mainMenuConfig['mmBigScreen']
+                      }
+                    },
                     materialManager:{
                       key:"materialManager",
                       title:"物料管理",
@@ -112,6 +121,16 @@
                         }
                       }
                     }
+                  },
+                  ma:{
+                    maIndex:{
+                      key:"maIndex",
+                      title:"主页",
+                      childmenu:{
+                        maDashboard:mainMenuConfig['maDashboard'],
+                        maBigScreen:mainMenuConfig['maBigScreen']
+                      }
+                    },
                   }
                 }
             }

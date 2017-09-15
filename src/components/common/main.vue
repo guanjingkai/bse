@@ -35,7 +35,7 @@
 </Row>
 <Row>
     <Col span='6'>
-      <ModelItem iconfont="SCP 云销售" font="Sales Cloud Platform"></ModelItem>
+      <ModelItem iconfont="MA 营销活动" font="marketing activity"></ModelItem>
     </Col>
     <Col span='6'>
       <ModelItem iconfont="APS 数据分析" font="Analytic Platform Service"></ModelItem>

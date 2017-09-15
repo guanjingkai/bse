@@ -94,6 +94,8 @@
         document.getElementsByTagName('body')[0].style.height = _self.$store.state.client.height + 'px';
         document.getElementById('layout-main').style.height = (_self.$store.state.client.height - 150) + 'px';
       };
+      console.log()
+      console.log()
     }
     }
   }
