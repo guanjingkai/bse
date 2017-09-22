@@ -6,6 +6,7 @@
 <script>
   import Form from '../common/form';
   import AvailableTime from './component/availableTime'
+  import ActiveTime from './component/activeTime'
   export default {
     data() {
       return {
@@ -32,7 +33,8 @@
           active_time: {
             key: "active_time",
             title: "活动时间",
-            type: "date-time-range",
+            type: "component",
+            component:ActiveTime,
             rule: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
           },
           available_time:{
@@ -40,6 +42,7 @@
             title: "可用时段",
             type: "component",
             component:AvailableTime,
+            gridSpan:24,
             rule: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
           },
           instructions: {
@@ -87,6 +90,7 @@
             key: "desc",
             title: "介绍",
             type: "md-edit",
+            gridSpan:24,
             rule: [{required: true, message: '请选填写品牌介绍', trigger: 'blur'}]
           }
         },

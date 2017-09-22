@@ -151,8 +151,9 @@
             this.thisRuleValidate[key] = this.thisParameter[key].rule;
           }
           //寻找自定义组件
+          const otherComponentIndex = 0;
           if(this.thisParameter[key].type == "component"){
-            this.otherComponent[this.thisParameter.key] = this.thisParameter[key].component;
+            this.otherComponent[this.thisParameter[key].key] = this.thisParameter[key].component;
           }
         }
       },

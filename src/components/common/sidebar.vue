@@ -131,6 +131,17 @@
                         maBigScreen:mainMenuConfig['maBigScreen']
                       }
                     },
+                    maVoucher:{
+                      key:"maVoucher",
+                      title:"卡券",
+                      childmenu:{
+                        maVoucherCreate:mainMenuConfig['maVoucherCreate'],
+                        maVoucherList:mainMenuConfig['maVoucherList'],
+                        maVoucherValidate:mainMenuConfig['maVoucherValidate'],
+                        maVoucherAdvertising:mainMenuConfig['maVoucherAdvertising'],
+                        maVoucherReport:mainMenuConfig['maVoucherReport']
+                      }
+                    },
                   }
                 }
             }
