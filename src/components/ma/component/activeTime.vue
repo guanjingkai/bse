@@ -1,7 +1,7 @@
 <template>
   <Row>
     <RadioGroup v-model="active_type" @on-change="setActiveState">
-      <Row style="margin-bottom: 8px;">
+      <Row style="margin-bottom: 16px;">
         <Radio label="0">
           <span>固定日期</span>
         </Radio>

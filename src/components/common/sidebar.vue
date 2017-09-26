@@ -1,5 +1,5 @@
 <template>
-  <Menu active-name="1-2" width="auto" :open-names="['index','platformSetting','brandManage','financialManage','userManage']"  @on-select="createTab">
+  <Menu active-name="1-2" width="auto" :open-names="['index','platformSetting','brandManage','financialManage','userManage']"  @on-select="createTab" style="height: 100%">
     <Submenu name="index" v-for="item in mainMenu[thisModel]">
       <template slot="title">
         <Icon type="ios-navigate"></Icon>

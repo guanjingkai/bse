@@ -59,8 +59,6 @@
         this.available_time.splice(index, 1);
       },
       setAvailableTime(event,index){
-        console.log(event);
-        console.log(index);
         this.available_time[index] = event;
       },
       setTimeState(state){

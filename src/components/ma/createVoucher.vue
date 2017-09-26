@@ -7,6 +7,7 @@
   import Form from '../common/form';
   import AvailableTime from './component/availableTime'
   import ActiveTime from './component/activeTime'
+  import VoucherDesc from './component/voucherDesc'
   export default {
     data() {
       return {
@@ -89,8 +90,8 @@
           desc: {
             key: "desc",
             title: "介绍",
-            type: "md-edit",
-            gridSpan:24,
+            type: "component",
+            component:VoucherDesc,
             rule: [{required: true, message: '请选填写品牌介绍', trigger: 'blur'}]
           }
         },
