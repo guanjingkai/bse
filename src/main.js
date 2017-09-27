@@ -3,15 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Vued from 'vued'
 import axios from 'axios'
-import iView from 'iview'
+import Vued from 'vued'
 import store from './store/store'
-import 'iview/dist/styles/iview.css'
+import 'vued/dist/styles/vued.css'
 
 Vue.config.productionTip = false
 Vue.use(Vued)
-Vue.use(iView)
 Vue.prototype.router = router;
 Vue.prototype.$http = axios
 Vue.prototype.serverUrl = 'https://server.chungold.com:7002/'
