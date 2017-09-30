@@ -1,5 +1,6 @@
 <template>
   <div class="">
+    <VoucherPage></VoucherPage>
     <CommonForm :parameter="parameter" :formValidate="formValidate"></CommonForm>
   </div>
 </template>
@@ -8,6 +9,7 @@
   import AvailableTime from './component/availableTime'
   import ActiveTime from './component/activeTime'
   import VoucherDesc from './component/voucherDesc'
+  import VoucherPage from './component/voucherPage'
   export default {
     data() {
       return {
@@ -115,7 +117,8 @@
       }
     },
     components: {
-      "CommonForm": Form
+      "CommonForm": Form,
+      'VoucherPage':VoucherPage
     },
     mounted() {
       //do something after mounting vue instance

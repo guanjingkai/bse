@@ -122,6 +122,8 @@
           this.formModel.parameter     = this.$props.parameter;
           this.formModel.formValidate  = this.$props.formValidate;
           this.formModel.gridSpan      = this.$props.gridSpan;
+        }else{
+            this.formModel = this.$props.model;
         }
         this.getState(this.formModel);
       },

@@ -125,7 +125,7 @@
           }
       },
       isSelect(key){
-          var u = false;
+          var thisSelectState = false;
           for(var item in this.selectImages){
               if(this.selectImages[item].key == key){
                 thisSelectState = true
