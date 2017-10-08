@@ -4,7 +4,7 @@
       星巴克拿铁咖啡兑换券
     </div>
     <div class="qrcode">
-      <img src="static/images/logo.png">
+      <img src="static/images/vued-qrcode.png">
       <span class='qrcode-num'>1223 2415</span>
     </div>
     <div class="card-line">
@@ -30,6 +30,11 @@
         <span class='voucher-info-value'>周一至周日 全天</span>
       </div>
     </div>
+    <div class="voucher-box">
+      <div class='voucher-info'>
+        <span class='voucher-info-title'>北京市朝阳区三里屯路19号</span>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -39,7 +44,7 @@
 </script>
 <style>
 .voucher-page{
-  width: 360px;
+  width: 320px;
   padding: 20px;
   background: #ABCFFF;
 }
@@ -49,6 +54,7 @@
     line-height: 52px;
     font-size: 18px;
     text-align: center;
+    background: #FFFFFF;
   }
 .qrcode{
   width: 100%;
@@ -96,5 +102,11 @@
   .voucher-box{
     background: #ffffff;
     border-bottom:1px dashed #ccc;
+    padding: 0px 16px;
+  }
+  .voucher-info{
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
   }
 </style>

@@ -49,7 +49,7 @@ export default {
   },
   methods:{
     goModel(){
-      this.router.push({path:mainMenuConfig[this.$props.modelName].path});
+      this.openPage(mainMenuConfig[this.$props.modelName].title,mainMenuConfig[this.$props.modelName].key,mainMenuConfig[this.$props.modelName].path);
     }
   }
 }

@@ -13,10 +13,12 @@
         </i-switch>
         <Cascader  v-if="item.type == 'cascader'" v-model="item.value" :data="item.data" trigger="hover"></Cascader>
       </Col>
-      <Col class-name="table-col">
+      <Col class-name="table-col" v-if="thisSearchConfig.toString() != arrayNull.toString()">
         <Button type="primary" icon="ios-search">查询</Button>
         <Button type="primary" icon="ios-refresh-empty">重置</Button>
-        <Button type="primary" icon="ios-refresh-empty" @click="Vue.$router.push({path:'/goodsTemplateDesign'})">创建</Button>
+      </Col>
+      <Col class-name="table-col">
+        <slot name="customAciton"></slot>
       </Col>
     </Row>
     <Table highlight-row :context="self" :data="thisTableData" :columns="thisTableColumns" stripe></Table>
@@ -53,7 +55,8 @@ export default {
       thisSearchConfig:[],
       thisBatchAction:[],
       thisTableData: [],
-      thisTableColumns: []
+      thisTableColumns: [],
+      arrayNull:[]
     }
   },
   props: {

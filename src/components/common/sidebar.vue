@@ -1,5 +1,5 @@
 <template>
-  <Menu active-name="1-2" width="auto" :open-names="['index','platformSetting','brandManage','financialManage','userManage']"  @on-select="createTab" style="height: 100%">
+  <Menu :active-name="thisMenu.key" width="auto" :open-names="['index','platformSetting','brandManage','financialManage','userManage']"  @on-select="createTab" style="height: 100%">
     <Submenu name="index" v-for="item in mainMenu[thisModel]">
       <template slot="title">
         <Icon type="ios-navigate"></Icon>
@@ -18,6 +18,7 @@
       data () {
             return {
                 theme2: 'light',
+                thisMenu:this.$store.state.tab.openComponentsList[this.$store.state.tab.thisPage.id],
                 thisModel:this.$route.matched[0].path.substr(1),
                 mainMenu:{
                   mm:{
@@ -135,8 +136,9 @@
                       key:"maVoucher",
                       title:"卡券",
                       childmenu:{
-                        maVoucherCreate:mainMenuConfig['maVoucherCreate'],
+                        maCreateVoucher:mainMenuConfig['maCreateVoucher'],
                         maVoucherList:mainMenuConfig['maVoucherList'],
+                        maHuiChangeCodeList:mainMenuConfig['maHuiChangeCodeList'],
                         maVoucherValidate:mainMenuConfig['maVoucherValidate'],
                         maVoucherAdvertising:mainMenuConfig['maVoucherAdvertising'],
                         maVoucherReport:mainMenuConfig['maVoucherReport']
@@ -152,11 +154,18 @@
         },
         createTab(item){
           const _self = this;
+          _self.openPage(mainMenuConfig[item].title,mainMenuConfig[item].key,mainMenuConfig[item].path);
           //console.log(_self.$store.state.model.menu[name].path);
           //this.router.push({ path: _self.$store.state.model.menu[name].path })
           console.log(item);
-          _self.router.push({path:mainMenuConfig[item].path});
+          
+        },
+        setThisMenu(){
+          this.thisMenu = this.$store.state.tab.openComponentsList[this.$store.state.tab.thisPage.id];
         }
+      },
+      watch:{
+        "$route":"setThisMenu"
       }
     }
 </script>

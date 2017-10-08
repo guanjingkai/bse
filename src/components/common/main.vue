@@ -35,7 +35,7 @@
 </Row>
 <Row>
     <Col span='6'>
-      <ModelItem iconfont="MA 营销活动" font="marketing activity"></ModelItem>
+      <ModelItem iconfont="MA 营销活动" font="marketing activity"  modelName="maVoucherList"></ModelItem>
     </Col>
     <Col span='6'>
       <ModelItem iconfont="APS 数据分析" font="Analytic Platform Service"></ModelItem>
@@ -63,9 +63,7 @@ export default {
     }
   },
   methods:{
-    goModel(item){
-      this.router.push({path:mainMenuConfig[item].path});
-    }
+    
   }
 }
 </script>

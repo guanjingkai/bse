@@ -32,8 +32,8 @@ export default {
     title: "大屏幕",
     path: "/mm/big_screen"
   },
-  maVoucherCreate: {
-    key: "maVoucherCreate",
+  maCreateVoucher: {
+    key: "maCreateVoucher",
     title: "卡券创建",
     path: "/ma/create_voucher"
   },
@@ -56,5 +56,15 @@ export default {
     key: "maVoucherReport",
     title: "活动报告",
     path: "/mm/big_screen"
+  },
+  maHuiChangeCodeList: {
+    key: "maHuiChangeCodeList",
+    title: "惠币兑换码",
+    path: "/ma/hui_code_list"
+  },
+  maCreateHuiChangeCode: {
+    key: "maCreateHuiChangeCode",
+    title: "惠币兑换码",
+    path: "/ma/create_hui_code"
   }
 }

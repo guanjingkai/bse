@@ -1,6 +1,10 @@
 <template>
   <div>
-    <CommomTable :api="api" :tableColumns="tableColumns" :tableData="tableData"></CommomTable>
+    <CommomTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig">
+      <div slot="customAciton">
+          <Button type="primary" icon="ios-refresh-empty" @click="openCreateVoucher()">创建</Button>     
+      </div>
+    </CommomTable>
   </div>
 </template>
 <script>
@@ -11,6 +15,31 @@ export default {
       self: this,
       api: {
         url: this.serverUrl+"ma/voucher/seller/1"
+      },
+      searchConfig:{
+        orderId:{
+          title:'订单ID',
+          key:'orderId',
+          type:'input',
+          width:150,
+          value:''
+        },
+        payTools:{
+          title:'支付方式',
+          key:'payType',
+          type:'select',
+          data:[{ key: "canyin", value: "微信" }, { key: "ertong", value: "支付宝" }, { key: "ertong1", value: "POS刷卡" }, { key: "ertong2", value: "现金" }, { key: "ertong3", value: "预存" }],
+          width:100,
+          value:''
+        },
+        payType:{
+          title:'计费类型',
+          key:'payType',
+          type:'select',
+          data:[{ key: "canyin", value: "扣款" }, { key: "ertong", value: "退款" }],
+          width:100,
+          value:''
+        }
       },
       tableData: [],
       tableColumns: [
@@ -82,6 +111,10 @@ export default {
       }, response => {
         // error callback
       })
+    },
+    openCreateVoucher(){
+      console.log("根据组件名称直接打开界面");
+      this.openComponent("maCreateVoucher")
     },
     testFunction(){
       alert(123)

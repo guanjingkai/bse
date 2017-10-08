@@ -48,6 +48,14 @@ export default new Router({
                 path: 'create_voucher',
                 name: 'createVoucher',
                 component: require('../components/ma/createVoucher.vue')
+            },{
+                path: 'hui_code_list',
+                name: 'huiChangeCodeList',
+                component: require('../components/ma/huiChangeCodeList.vue')
+            },{
+                path: 'create_hui_code',
+                name: 'createHuiChangeCode',
+                component: require('../components/ma/createHuiChangeCode')
             }]
         }
     ]

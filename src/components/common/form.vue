@@ -2,15 +2,15 @@
   <Row>
     <Col span="24">
 
-    <Form ref="formValidate" :model="thisFormValidate" :rules="thisRuleValidate" :label-width="100" style="max-width:900px;">
+    <Form ref="formValidate" :model="thisFormValidate" :rules="thisRuleValidate" :label-width="100" style="min-width:420px;max-width:900px;">
     <Row>
       <Col v-for="(item,key) in thisParameter" :span="getSpan(item)">
       <Form-item  :label="item.title" :prop="item.key">
         <Alert v-if="item.type == 'formGroupTitle'" style="margin-left:-100px;">{{item.value}}</Alert>
         <p v-if="item.type == 'kong'" style="display:block;height:33px;"></p>
-        <Input v-if="item.type == 'input'" v-model="thisFormValidate[item.key]" :placeholder="'请输入'+item.title"></Input>
+        <Input v-if="item.type == 'input'" v-model="thisFormValidate[item.key]" :placeholder="'请输入'+item.title"  style="max-width:360px;"></Input>
         <Input v-if="item.type == 'textarea'"  v-model="thisFormValidate[item.key]" type="textarea" :autosize="{minRows: 2,maxRows: 5}" :placeholder="'请输入'+item.title"></Input>
-        <Select v-if="item.type == 'select'" v-model="thisFormValidate[item.key]":placeholder="'请选择'+item.title" :placement="item.hasOwnProperty('placement') ? item.placement :'bottom'">
+        <Select v-if="item.type == 'select'" v-model="thisFormValidate[item.key]":placeholder="'请选择'+item.title" :placement="item.hasOwnProperty('placement') ? item.placement :'bottom'"  style="max-width:360px;">
           <Option v-for="(option,key) in item.value" :value="option.key">{{option.value}}</Option>
         </Select>
         <Radio-group v-if="item.type == 'radio'" v-model="thisFormValidate[item.key]">
@@ -102,7 +102,7 @@
               }
           },gridSpan: {
               default: function () {
-                  return 13
+                  return 22
               }
           }},
     mounted:function(){

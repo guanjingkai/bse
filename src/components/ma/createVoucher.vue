@@ -1,8 +1,12 @@
 <template>
-  <div class="">
-    <VoucherPage></VoucherPage>
-    <CommonForm :parameter="parameter" :formValidate="formValidate"></CommonForm>
-  </div>
+  <Row  type="flex" class="">
+    <i-col class="page-box">
+      <VoucherPage></VoucherPage>
+    </i-col>
+    <i-col class="form-box">
+      <CommonForm :parameter="parameter" :formValidate="formValidate"></CommonForm>
+    </i-col>
+  </Row>
 </template>
 <script>
   import Form from '../common/form';
@@ -128,5 +132,14 @@
   }
 </script>
 <style>
-
+  .page-box{
+    width: 320px;
+    height: 100%;
+    overflow-y: scroll;
+  }
+  .form-box{
+    width: calc(100% - 320px);
+    height: 100%;
+    overflow-y: scroll;
+  }
 </style>

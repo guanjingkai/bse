@@ -26,12 +26,18 @@ const userModule = {
 }
 const tabModule = {
     state: {
-        tabList: {},
-        pageList: {}
+        thisPage:{
+            id:''
+        },
+        openComponentsList: {}
     },
     mutations: {
-        createTab() {
-
+        createTab(state, n) {
+            console.log(55);
+            state.openComponentsList[n.pageId]=n
+        },
+        setThisPageId(state,n){
+            state.thisPage.id = n.pageId
         }
     },
     actions: {
