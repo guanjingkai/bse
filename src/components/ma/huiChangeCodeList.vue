@@ -1,10 +1,10 @@
 <template>
   <div>
-    <CommomTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig">
+    <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig">
       <div slot="customAciton">
           <Button type="primary" icon="ios-refresh-empty" @click="openCreateHuiChangeCode()">生成惠币兑换码</Button>     
       </div>
-    </CommomTable>
+    </CommonTable>
   </div>
 </template>
 <script>
@@ -14,29 +14,27 @@ export default {
     return {
       self: this,
       api: {
-        url: this.serverUrl+"ma/voucher/seller/1"
+        url: this.serverUrl+"ma/voucher/changeCodeList"
       },
       searchConfig:{
-        orderId:{
-          title:'订单ID',
-          key:'orderId',
+        change_code_name:{
+          title:'兑换码名称',
+          key:'change_code_name',
+          type:'input',
+          width:150,
+          value:''
+        },change_code_prefix:{
+          title:'批次/前缀',
+          key:'change_code_prefix',
           type:'input',
           width:150,
           value:''
         },
         payTools:{
-          title:'支付方式',
+          title:'状态',
           key:'payType',
           type:'select',
-          data:[{ key: "canyin", value: "微信" }, { key: "ertong", value: "支付宝" }, { key: "ertong1", value: "POS刷卡" }, { key: "ertong2", value: "现金" }, { key: "ertong3", value: "预存" }],
-          width:100,
-          value:''
-        },
-        payType:{
-          title:'计费类型',
-          key:'payType',
-          type:'select',
-          data:[{ key: "canyin", value: "扣款" }, { key: "ertong", value: "退款" }],
+          data:[{ key: "canyin", value: "正常" }, { key: "ertong", value: "即将用尽" }, { key: "ertong3", value: "用尽" }],
           width:100,
           value:''
         }
@@ -45,26 +43,29 @@ export default {
       tableColumns: [
         {
           title: '兑换码名称',
-          key: 'voucher_id',
-          width: 100
+          key: 'change_code_name',
+          width: 200
         }, {
           title: '前缀/批次',
-          key: 'voucher_title',
+          key: 'change_code_prefix',
         }, {
           title: '生成数量',
-          key: 'voucher_type',
+          key: 'generate_num',
         }, {
           title: '已使用',
-          key: 'voucher_title',
+          key: 'use_num',
         }, {
           title: '有效期',
-          key: 'voucher_title',
+          key: 'validity_time',
         }, {
-          title: '面值',
-          key: 'voucher_title',
+          title: '兑换惠币数量',
+          key: 'change_hui_num',
         }, {
           title: '状态',
-          key: 'voucher_title',
+          key: 'change_code_type',
+        },  {
+          title: '备注',
+          key: 'remark',
         }, {
           title: '操作',
           key: 'voucher_title',
@@ -95,7 +96,7 @@ export default {
     }
   },
   components: {
-    "CommomTable": Table
+    "CommonTable": Table
   },
   mounted() {
     this.getData();

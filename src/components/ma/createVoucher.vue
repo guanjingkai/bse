@@ -68,7 +68,8 @@
           available_stores: {
             key: "available_stores",
             title: "可用门店",
-            type: "input",
+            type: "checkbox",
+            value: [{ key: "canyin", value: "北京-静安中心店" }, { key: "ertong", value: "北京-三里屯店" }, { key: "tiyu", value: "大连-华南广场店" }, { key: "wenchuang", value: "上海-东方明珠店" }, { key: "lingshou", value: "沈阳-大悦城店" }],
             rule: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
           },
           circulation: {
@@ -135,11 +136,11 @@
   .page-box{
     width: 320px;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   .form-box{
     width: calc(100% - 320px);
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 </style>

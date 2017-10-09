@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CommomTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig"></CommomTable>
+    <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig"></CommonTable>
   </div>
 </template>
 <script>
@@ -114,7 +114,7 @@ export default {
     }
   },
   components: {
-    "CommomTable": Table
+    "CommonTable": Table
   },
   mounted() {
     this.getData();
@@ -125,7 +125,6 @@ export default {
       this.$http.get(_self.api.url).then(response => {
         // success callback
         _self.tableData = response.data.data.list;
-        console.log(response.data.data.list);
       }, response => {
         // error callback
       })

@@ -3,11 +3,11 @@
     <Menu mode="horizontal" theme="dark" active-name="1">
       <Row type="flex">
         <i-col class-name="main-left" style="overflow:hidden">
-          <div class="layout-logo">
+          <div class="layout-logo" @click="backMain()">
             <img src="static/images/logo.png">
           </div>
-        </i-col>;
-        <i-col span="19">
+        </i-col>
+        <i-col class-name="header-center">
           <div class="layout-nav">
             <Menu-item name="1">
               <Icon type="ios-navigate"></Icon>
@@ -31,15 +31,38 @@
             </Menu-item>
           </div>
         </i-col>
+        <i-col class-name="header-right">
+          
+          <div class="user-info" style="margin-top:2px">
+            <!--<Icon type="ios-telephone-outline"></Icon>
+            <Icon type="ios-bell-outline"></Icon>
+            <Icon type="ios-help-outline"></Icon>-->
+            <Badge count="1">
+            <Avatar icon="ios-telephone-outline" />
+            </Badge>
+            <Badge count="19">
+            <Avatar icon="ios-bell-outline" />
+            </Badge>
+            <Badge>
+            <Avatar icon="ios-help-outline" />
+            </Badge>
+          </div>
+          <div class="user-info">
+            <span class="user-name">
+              雷丘      
+            </span>
+          </div>
+          <Avatar class="user-avatar" src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="large"/>
+        </i-col>
       </Row>
     </Menu>
     <Menu mode="horizontal">
       <Row type="flex" class-name="main-tab">
         <i-col class-name="main-left" style="height:60px;padding-right:10px;">
           <Input size="large" style="margin-top:10px;">
-          <Select v-model="select3" slot="prepend" style="width: 70px">
-            <Option value="day">命令码</Option>
-            <Option value="month">搜索</Option>
+          <Select v-model="shortcutAction" slot="prepend" style="width: 70px">
+            <Option value="command">命令码</Option>
+            <Option value="search">搜索</Option>
           </Select>
           <Button  type="info" slot="append" icon="arrow-right-c"></Button>
           </Input>
@@ -47,7 +70,7 @@
         <i-col span="19">
           <div class="layout-assistant">
             <li :class="tab.pageId == thisPage.id ? 'ivu-menu-item ivu-menu-item-active ivu-menu-item-selected':'ivu-menu-item' " v-for="tab in tabInfo" @click="clickTab(tab.pageId)">
-              <Icon type="ios-paper"></Icon>
+              <!--<Icon type="ios-paper"></Icon>-->
               {{tab.title}}
             </li>
           </div>
@@ -78,7 +101,8 @@ export default {
   data() {
     return {
       thisPage: this.$store.state.tab.thisPage,
-      tabInfo: this.$store.state.tab.openComponentsList
+      tabInfo: this.$store.state.tab.openComponentsList,
+      shortcutAction:"command"
     }
   },
   components: {
@@ -119,6 +143,9 @@ export default {
         item = this.$route.path;
       }
       this.openPage(this.tabInfo[item].title, this.tabInfo[item].key, this.tabInfo[item].pageId);
+    },
+    backMain(){
+      this.router.push({ path: "/" });
     }
   }
 }
@@ -126,7 +153,6 @@ export default {
 
 <style>
 .layout {
-  border: 1px solid #d7dde4;
   background: #f5f7f9;
 }
 
@@ -178,17 +204,55 @@ export default {
   padding: 10px 0 20px;
   color: #9ea7b4;
 }
-
 .main-left {
   width: 200px;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
-
+.header-right{
+  width:300px;
+}
+.header-center{
+   width: calc(100% - 500px);
+   height: 100%;
+}
+.user-info{
+  width:auto;
+  height:60px;
+  line-height:60px;
+  color:#ffffff;
+  float:right;
+  margin-right:16px;
+}
+.user-name{
+  display:inline;
+  height:60px;
+  line-height:60px;
+  font-size:16px;
+}
+.user-name .ivu-icon{
+  font-size:14px;
+}
+.header-right .user-avatar{
+  margin:10px;
+  float:right;
+  background:none;
+}
+.header-right .ivu-badge{
+  margin:4px;
+  top:-4px;
+}
+.header-right .ivu-avatar{
+  float:right;
+  background:none;
+}
+.user-info i{
+  font-size:26px;
+}
 .main-right {
   width: calc(100% - 200px);
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .main-tab {

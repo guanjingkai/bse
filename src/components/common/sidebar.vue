@@ -136,10 +136,9 @@
                       key:"maVoucher",
                       title:"卡券",
                       childmenu:{
-                        maCreateVoucher:mainMenuConfig['maCreateVoucher'],
                         maVoucherList:mainMenuConfig['maVoucherList'],
                         maHuiChangeCodeList:mainMenuConfig['maHuiChangeCodeList'],
-                        maVoucherValidate:mainMenuConfig['maVoucherValidate'],
+                        maVoucherUseList:mainMenuConfig['maVoucherUseList'],
                         maVoucherAdvertising:mainMenuConfig['maVoucherAdvertising'],
                         maVoucherReport:mainMenuConfig['maVoucherReport']
                       }

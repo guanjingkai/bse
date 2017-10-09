@@ -78,11 +78,11 @@
   .page-box{
     width: 320px;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   .form-box{
     width: calc(100% - 320px);
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 </style>

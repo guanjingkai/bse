@@ -1,10 +1,10 @@
 <template>
   <div>
-    <CommomTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig">
+    <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig">
       <div slot="customAciton">
           <Button type="primary" icon="ios-refresh-empty" @click="openCreateVoucher()">创建</Button>     
       </div>
-    </CommomTable>
+    </CommonTable>
   </div>
 </template>
 <script>
@@ -14,18 +14,18 @@ export default {
     return {
       self: this,
       api: {
-        url: this.serverUrl+"ma/voucher/seller/1"
+        url: this.serverUrl+"ma/voucher/list"
       },
       searchConfig:{
         orderId:{
-          title:'订单ID',
+          title:'卡券ID',
           key:'orderId',
           type:'input',
           width:150,
           value:''
         },
         payTools:{
-          title:'支付方式',
+          title:'卡券类型',
           key:'payType',
           type:'select',
           data:[{ key: "canyin", value: "微信" }, { key: "ertong", value: "支付宝" }, { key: "ertong1", value: "POS刷卡" }, { key: "ertong2", value: "现金" }, { key: "ertong3", value: "预存" }],
@@ -33,7 +33,7 @@ export default {
           value:''
         },
         payType:{
-          title:'计费类型',
+          title:'有效期',
           key:'payType',
           type:'select',
           data:[{ key: "canyin", value: "扣款" }, { key: "ertong", value: "退款" }],
@@ -44,27 +44,25 @@ export default {
       tableData: [],
       tableColumns: [
         {
-          title: '卡券ID',
-          key: 'voucher_id',
-          width: 100
-        }, {
           title: '卡券名称',
           key: 'voucher_title',
+          width: 200
         }, {
           title: '卡券类型',
           key: 'voucher_type',
         }, {
           title: '有效期',
-          key: 'voucher_title',
+          key: 'validity_time',
+          width: 200
         }, {
           title: '剩余库存',
-          key: 'voucher_title',
+          key: 'available_num',
         }, {
           title: '核销数量',
-          key: 'voucher_title',
+          key: 'use_num',
         }, {
           title: '卡券状态',
-          key: 'voucher_title',
+          key: 'voucher_state',
         }, {
           title: '操作',
           key: 'voucher_title',
@@ -95,7 +93,7 @@ export default {
     }
   },
   components: {
-    "CommomTable": Table
+    "CommonTable": Table
   },
   mounted() {
     this.getData();

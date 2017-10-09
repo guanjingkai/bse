@@ -44,18 +44,22 @@ export default new Router({
                 path: 'voucher_list',
                 name: 'voucherList',
                 component: require('../components/ma/voucherList.vue')
-            },{
+            }, {
                 path: 'create_voucher',
                 name: 'createVoucher',
                 component: require('../components/ma/createVoucher.vue')
-            },{
+            }, {
                 path: 'hui_code_list',
                 name: 'huiChangeCodeList',
                 component: require('../components/ma/huiChangeCodeList.vue')
-            },{
+            }, {
                 path: 'create_hui_code',
                 name: 'createHuiChangeCode',
-                component: require('../components/ma/createHuiChangeCode')
+                component: require('../components/ma/createHuiChangeCode.vue')
+            }, {
+                path: 'voucher_use_list',
+                name: 'voucherUseList',
+                component: require('../components/ma/voucherUseList.vue')
             }]
         }
     ]

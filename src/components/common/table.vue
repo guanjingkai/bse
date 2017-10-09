@@ -1,24 +1,31 @@
 <template>
   <div style="margin-top:10px;">
-    <Row type="flex" class-name="table-search">
-      <Col class-name="table-col" v-for="(item, key) in thisSearchConfig">
-        <Input v-if="item.type == 'input'" v-model="item.value" :placeholder="item.title" :style="{'width':item.hasOwnProperty('width')?item.width>0?item.width+'px':'150px':'150px'}"></Input>
-        <Select v-if="item.type == 'select'" v-model="item.value":placeholder="item.title" :style="{'width':item.hasOwnProperty('width')?item.width>0?item.width+'px':'150px':'150px'}">
-          <Option v-for="(option, key) in item.data" :value="option.key">{{option.value}}</Option>
-        </Select>
-        <Date-picker v-if="item.type == 'date-time'" type="daterange" :options="item.option" :placement="item.hasOwnProperty('placement')?item.width != ''?item.placement:'bottom-end':'bottom-end'" :placeholder="item.title" :style="{'width':item.hasOwnProperty('width')?item.width>0?item.width+'px':'150px':'150px'}"></Date-picker>
-        <i-switch size="large" v-model="item.value" v-if="item.type == 'switch'">
-          <span slot="open">开启</span>
-          <span slot="close">关闭</span>
-        </i-switch>
-        <Cascader  v-if="item.type == 'cascader'" v-model="item.value" :data="item.data" trigger="hover"></Cascader>
-      </Col>
-      <Col class-name="table-col" v-if="thisSearchConfig.toString() != arrayNull.toString()">
-        <Button type="primary" icon="ios-search">查询</Button>
-        <Button type="primary" icon="ios-refresh-empty">重置</Button>
-      </Col>
-      <Col class-name="table-col">
-        <slot name="customAciton"></slot>
+    <Row type="flex">
+      <Col span="18">
+        <Row type="flex" class-name="table-search">
+          <Col class-name="table-col" v-for="(item, key) in thisSearchConfig">
+            <Input v-if="item.type == 'input'" v-model="item.value" :placeholder="item.title" :style="{'width':item.hasOwnProperty('width')?item.width>0?item.width+'px':'150px':'150px'}"></Input>
+            <Select v-if="item.type == 'select'" v-model="item.value":placeholder="item.title" :style="{'width':item.hasOwnProperty('width')?item.width>0?item.width+'px':'150px':'150px'}">
+              <Option v-for="(option, key) in item.data" :value="option.key">{{option.value}}</Option>
+            </Select>
+            <Date-picker v-if="item.type == 'date-time'" type="daterange" :options="item.option" :placement="item.hasOwnProperty('placement')?item.width != ''?item.placement:'bottom-end':'bottom-end'" :placeholder="item.title" :style="{'width':item.hasOwnProperty('width')?item.width>0?item.width+'px':'150px':'150px'}"></Date-picker>
+            <i-switch size="large" v-model="item.value" v-if="item.type == 'switch'">
+              <span slot="open">开启</span>
+              <span slot="close">关闭</span>
+            </i-switch>
+            <Cascader  v-if="item.type == 'cascader'" v-model="item.value" :data="item.data" trigger="hover"></Cascader>
+          </Col>
+          <Col class-name="table-col" v-if="thisSearchConfig.toString() != arrayNull.toString()">
+            <Button type="primary" icon="ios-search">查询</Button>
+            <Button type="primary" icon="ios-refresh-empty">重置</Button>
+          </Col>
+        </Row>
+      </Col>    
+      
+      <Col span="6">
+        <div style="float:right;">
+          <slot name="customAciton"></slot>
+        </div>
       </Col>
     </Row>
     <Table highlight-row :context="self" :data="thisTableData" :columns="thisTableColumns" stripe></Table>
@@ -89,10 +96,14 @@ export default {
                 return []
             }
         }},
+  create:function(){
+    console.log("create")
+  },
   activated: function () {
-    this.init();
+    console.log("activated")
   },
   mounted: function () {
+    console.log("mounted")
     this.init();
   },
   methods: {
@@ -104,27 +115,39 @@ export default {
       this.thisApi          = this.$props.api;//this.$store.state.model[this.model].api;
       this.thisTableColumns = this.$props.tableColumns;//this.$store.state.model[this.model].tableColumns;
       this.thisSearchConfig = this.$props.searchConfig;//this.$store.state.model[this.model].searchConfig;
-      this.thisBatchAction  = this.$props.batchAction;//this.$store.state.model[this.model].batchAction;
-      this.thisTableData    = this.$props.tableData;
+      this.thisBatchAction  = this.$props.batchAction;//this.$store.state.model[this.model].batchAction;     
+      //是否是默认data获取方式
+      console.log(this.$props.tableData.toString())
+      if(this.$props.tableData.toString() == [].toString()){
+        this.getData();
+      }else{
+        this.thisTableData    = this.$props.tableData;
+      }
     },
     getData() {
       var _self = this;
       //this.Tab.create();
       //this.Tab.close();
-    //   this.Http.get(_self.api.url, function (jsonData) {
-    //     _self.thisTableData = jsonData.list;
-    //     console.log(jsonData.list);
-    //     _self.spinShow = false;
-    //   });
-      this.$http.get(_self.thisApi.url).then(response => {
+      //   this.Http.get(_self.api.url, function (jsonData) {
+      //     _self.thisTableData = jsonData.list;
+      //     console.log(jsonData.list);
+      //     _self.spinShow = false;
+      //   });
+      // this.$http.get(_self.thisApi.url).then(response => {
+      //   // success callback
+      //   _self.thisTableData = response.data;
+      //   console.log('请求成功');
+      //   console.log(response);
+      //   }, response => {
+      //     // error callback
+      //     console.log('请求失败');
+      //   })
+      this.$http.post(_self.api.url).then(response => {
         // success callback
-        _self.thisTableData = response.data;
-        console.log('请求成功');
-        console.log(response);
-        }, response => {
-          // error callback
-          console.log('请求失败');
-        })
+        _self.thisTableData = response.data.data.list;
+      }, response => {
+        // error callback
+      })
       //_self.tableData = [{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}]
     },
     testData() {
@@ -155,7 +178,7 @@ export default {
   },
   watch: {
     '$route'(to, from) {
-      this.init();
+      //this.init();
     },
     tableData(curVal,oldVal){
         console.log('tableData更新')
