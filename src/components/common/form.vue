@@ -191,4 +191,7 @@
 .ued-form-item-content{
 
 }
+.ivu-cascader{
+  max-width:360px;
+}
 </style>

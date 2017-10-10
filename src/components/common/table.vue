@@ -8,7 +8,7 @@
             <Select v-if="item.type == 'select'" v-model="item.value":placeholder="item.title" :style="{'width':item.hasOwnProperty('width')?item.width>0?item.width+'px':'150px':'150px'}">
               <Option v-for="(option, key) in item.data" :value="option.key">{{option.value}}</Option>
             </Select>
-            <Date-picker v-if="item.type == 'date-time'" type="daterange" :options="item.option" :placement="item.hasOwnProperty('placement')?item.width != ''?item.placement:'bottom-end':'bottom-end'" :placeholder="item.title" :style="{'width':item.hasOwnProperty('width')?item.width>0?item.width+'px':'150px':'150px'}"></Date-picker>
+            <Date-picker v-if="item.type == 'date-time'" type="daterange" :options="item.option" :placement="item.hasOwnProperty('placement')?item.width != ''?item.placement:'bottom-start':'bottom-start'" :placeholder="item.title" :style="{'width':item.hasOwnProperty('width')?item.width>0?item.width+'px':'150px':'150px'}"></Date-picker>
             <i-switch size="large" v-model="item.value" v-if="item.type == 'switch'">
               <span slot="open">开启</span>
               <span slot="close">关闭</span>
@@ -108,20 +108,28 @@ export default {
   },
   methods: {
     init() {
+      var thisData = "";
       this.spinShow = true;
       //this.model = this.$props.model == null ? this.$route.params.model : this.$props.model;
       //console.log(this.model);
       //Mapper
-      this.thisApi          = this.$props.api;//this.$store.state.model[this.model].api;
-      this.thisTableColumns = this.$props.tableColumns;//this.$store.state.model[this.model].tableColumns;
-      this.thisSearchConfig = this.$props.searchConfig;//this.$store.state.model[this.model].searchConfig;
-      this.thisBatchAction  = this.$props.batchAction;//this.$store.state.model[this.model].batchAction;     
-      //是否是默认data获取方式
-      console.log(this.$props.tableData.toString())
-      if(this.$props.tableData.toString() == [].toString()){
+      if(this.$props.model.toString() == [].toString()){
+        this.thisApi          = this.$props.api;//this.$store.state.model[this.model].api;
+        this.thisTableColumns = this.$props.tableColumns;//this.$store.state.model[this.model].tableColumns;
+        this.thisSearchConfig = this.$props.searchConfig;//this.$store.state.model[this.model].searchConfig;
+        this.thisBatchAction  = this.$props.batchAction;//this.$store.state.model[this.model].batchAction;     
+        thisData              = this.$props.tableData;
+      }else{
+        this.thisApi          = this.$props.model.api;//this.$store.state.model[this.model].api;
+        this.thisTableColumns = this.$props.model.tableColumns;//this.$store.state.model[this.model].tableColumns;
+        this.thisSearchConfig = this.$props.model.searchConfig;//this.$store.state.model[this.model].searchConfig;
+        this.thisBatchAction  = this.$props.model.batchAction;//this.$store.state.model[this.model].batchAction;     
+        thisData              = this.$props.model.tableData;
+      }
+      if(thisData.toString() == [].toString()){
         this.getData();
       }else{
-        this.thisTableData    = this.$props.tableData;
+        this.thisTableData    = thisData;
       }
     },
     getData() {

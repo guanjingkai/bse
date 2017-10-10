@@ -25,16 +25,18 @@ export default new Router({
             name: 'Layout',
             component: require('../components/common/layout.vue'),
             children: [{
-                    path: 'create_material',
-                    name: 'createMaterial',
-                    component: require('../components/mm/createMaterial.vue')
-                },
-                {
-                    path: 'material_list',
-                    name: 'materialList',
-                    component: require('../components/mm/materialList.vue')
-                }
-            ]
+                path: 'create_material',
+                name: 'createMaterial',
+                component: require('../components/mm/createMaterial.vue')
+            }, {
+                path: 'create_supplier',
+                name: 'createSupplier',
+                component: require('../components/mm/createSupplier.vue')
+            }, {
+                path: 'material_list',
+                name: 'materialList',
+                component: require('../components/mm/materialList.vue')
+            }]
         },
         {
             path: '/ma',

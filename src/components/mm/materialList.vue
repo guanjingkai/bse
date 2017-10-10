@@ -10,7 +10,7 @@ export default {
     return {
       self: this,
       api: {
-        url: "http://brand.api.hanyun.com/brand/brand/info?pageNo=1&pageSize=10"
+        url: ""
       },
       searchConfig:{
         orderId:{
@@ -39,45 +39,36 @@ export default {
       tableData: [],
       tableColumns: [
         {
-          title: '品牌ID',
+          title: '物料ID',
           key: 'id',
           width: 100
         }, {
-          title: '品牌名称',
-          key: 'brandName',
+          title: '物料名称',
+          key: 'materialName',
         }, {
-          title: '公司名称',
-          key: 'companyName',
-          width: 200
+          title: '物料图片',
+          key: 'materialImage'
         }, {
-          title: '结算方式',
-          key: 'brandStatus',
-          render: (h, params) => {
-            return h('div', [
-              h('Button', {
-                props: {
-                  type: 'text',
-                  size: 'small'
-                }
-              }, '查看'),
-              h('Button', {
-                props: {
-                  type: 'text',
-                  size: 'small'
-                }
-              }, '编辑')
-            ]);
-          }
+          title: '物料类型',
+          key: 'materialType'
         }, {
-          title: '地区',
-          key: 'province',
+          title: '物料组',
+          key: 'materialGroup',
         }, {
-          title: '行业',
+          title: '上次供货商',
+          key: 'lastSupplier',
+        }, {
+          title: '类目',
           key: 'industryName',
         }, {
-          title: '入驻时间',
-          key: 'createTime',
-          sortable: true,
+          title: '采购组',
+          key: 'createTime'
+        },  {
+          title: '当前库存',
+          key: 'sk'
+        },  {
+          title: '来源',
+          key: 'aa'
         }, {
           title: '更新时间',
           key: 'updateTime',

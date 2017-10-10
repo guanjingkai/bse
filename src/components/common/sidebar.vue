@@ -34,8 +34,8 @@
                       key:"materialManager",
                       title:"物料管理",
                       childmenu:{
-                        createMaterial:mainMenuConfig['createMaterial'],
-                        materialList:mainMenuConfig['materialList'],
+                        createMaterial:mainMenuConfig['mmcreateMaterial'],
+                        materialList:mainMenuConfig['mmmaterialList'],
                         batchManagement:{
                           key:"",
                           title:"批次管理",
@@ -46,10 +46,7 @@
                       key:"supplier",
                       title:"供应商",
                       childmenu:{
-                        createSupplier:{
-                          key:"createSupplier",
-                          title:"创建供应商",
-                        },
+                        createSupplier:mainMenuConfig['mmcreateSupplier'],
                         supplierList:{
                           key:"",
                           title:"供应商列表",

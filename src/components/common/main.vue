@@ -7,7 +7,7 @@
 </Row>
 <Row>
     <Col span='6'>
-      <ModelItem iconfont="MM 物料仓储" font="Materials Management" modelName="createMaterial"></ModelItem>
+      <ModelItem iconfont="MM 物料仓储" font="Materials Management" modelName="mmcreateMaterial"></ModelItem>
     </Col>
     <Col span='6'>
       <ModelItem iconfont="SD 分销销售" font="Sales and Distribution"></ModelItem>

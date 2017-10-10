@@ -52,7 +52,7 @@
               雷丘      
             </span>
           </div>
-          <Avatar class="user-avatar" src="https://i.loli.net/2017/08/21/599a521472424.jpg" size="large"/>
+          <Avatar class="user-avatar" src="https://i.loli.net/2017/08/21/599a521472424.jpg"/>
         </i-col>
       </Row>
     </Menu>
@@ -228,13 +228,13 @@ export default {
   display:inline;
   height:60px;
   line-height:60px;
-  font-size:16px;
+  font-size:14px;
 }
 .user-name .ivu-icon{
   font-size:14px;
 }
 .header-right .user-avatar{
-  margin:10px;
+  margin:13px;
   float:right;
   background:none;
 }

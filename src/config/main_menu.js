@@ -12,15 +12,20 @@ export default {
         title: "大屏幕",
         path: "/mm/big_screen"
     },
-    createMaterial: {
-        key: "createMaterial",
+    mmcreateMaterial: {
+        key: "mmcreateMaterial",
         title: "创建物料",
         path: "/mm/create_material"
     },
-    materialList: {
-        key: "materialList",
+    mmmaterialList: {
+        key: "mmmaterialList",
         title: "物料列表",
         path: "/mm/material_list"
+    },
+    mmcreateSupplier: {
+        key: "mmcreateSupplier",
+        title: "创建供应商",
+        path: "/mm/create_supplier"
     },
     maDashboard: {
         key: "mmDashboard",

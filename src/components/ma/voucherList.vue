@@ -28,16 +28,15 @@ export default {
           title:'卡券类型',
           key:'payType',
           type:'select',
-          data:[{ key: "canyin", value: "微信" }, { key: "ertong", value: "支付宝" }, { key: "ertong1", value: "POS刷卡" }, { key: "ertong2", value: "现金" }, { key: "ertong3", value: "预存" }],
+          data:[{ key: "canyin", value: "兑换券" }, { key: "ertong", value: "代金券" }, { key: "ertong1", value: "折扣券" }],
           width:100,
           value:''
         },
         payType:{
           title:'有效期',
           key:'payType',
-          type:'select',
-          data:[{ key: "canyin", value: "扣款" }, { key: "ertong", value: "退款" }],
-          width:100,
+          type:'date-time',
+          width:180,
           value:''
         }
       },
