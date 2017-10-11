@@ -14,7 +14,7 @@ export default {
     return {
       self: this,
       api: {
-        url: this.serverUrl+"ma/voucher/list"
+        url: "ma/voucher/list"
       },
       searchConfig:{
         orderId:{

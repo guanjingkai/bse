@@ -10,7 +10,7 @@ export default {
     return {
       self: this,
       api: {
-        url: ""
+        url: "/mm/material/list"
       },
       searchConfig:{
         orderId:{
@@ -47,7 +47,15 @@ export default {
           key: 'materialName',
         }, {
           title: '物料图片',
-          key: 'materialImage'
+          key: 'materialImage',
+          render: (h, params) => {
+            return h('Avatar', {
+                props: {
+                    shape: "square",
+                    src: params.row.materialImage
+                }
+            }, '编辑');
+        }
         }, {
           title: '物料类型',
           key: 'materialType'
@@ -62,13 +70,10 @@ export default {
           key: 'industryName',
         }, {
           title: '采购组',
-          key: 'createTime'
+          key: 'purchasingOrg'
         },  {
           title: '当前库存',
-          key: 'sk'
-        },  {
-          title: '来源',
-          key: 'aa'
+          key: 'stock'
         }, {
           title: '更新时间',
           key: 'updateTime',

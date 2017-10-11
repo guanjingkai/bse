@@ -10,7 +10,7 @@ export default {
     return{
       self:this,
       api:{
-        url:this.serverUrl+"ma/voucher/alreadyUseList"
+        url:"ma/voucher/alreadyUseList"
       },
       searchConfig:{
         user_nikename:{

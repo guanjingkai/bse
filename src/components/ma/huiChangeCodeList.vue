@@ -14,7 +14,7 @@ export default {
     return {
       self: this,
       api: {
-        url: this.serverUrl+"ma/voucher/changeCodeList"
+        url: "ma/voucher/changeCodeList"
       },
       searchConfig:{
         change_code_name:{

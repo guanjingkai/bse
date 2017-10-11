@@ -150,7 +150,7 @@ export default {
       //     // error callback
       //     console.log('请求失败');
       //   })
-      this.$http.post(_self.api.url).then(response => {
+      this.$http.post(_self.serverUrl+_self.thisApi.url).then(response => {
         // success callback
         _self.thisTableData = response.data.data.list;
       }, response => {

@@ -7,13 +7,13 @@
 </Row>
 <Row>
     <Col span='6'>
-      <ModelItem iconfont="MM 物料仓储" font="Materials Management" modelName="mmcreateMaterial"></ModelItem>
+      <ModelItem iconfont="MM 物料管理" font="Materials Management" modelName="mmcreateMaterial"></ModelItem>
     </Col>
     <Col span='6'>
-      <ModelItem iconfont="SD 分销销售" font="Sales and Distribution"></ModelItem>
+      <ModelItem iconfont="WM 仓储管理" font="Warehouse Management"></ModelItem>
     </Col>
     <Col span='6'>
-      <ModelItem iconfont="AM 固定资产" font="Asset Management"></ModelItem>
+      <ModelItem iconfont="SC 服务管理" font="Service and Card"></ModelItem>
     </Col>
     <Col span='6'>
       <ModelItem iconfont="PP 生产计划" font="Production Planning"></ModelItem>
@@ -21,10 +21,24 @@
 </Row>
 <Row>
     <Col span='6'>
+      <ModelItem iconfont="SD 分销销售" font="Sales and Distribution"></ModelItem>
+    </Col>
+    <Col span='6'>
+      <ModelItem iconfont="MA 营销活动" font="marketing activity"  modelName="maVoucherList"></ModelItem>
+    </Col>
+    <Col span='6'>
+      <ModelItem iconfont="CS 售后中心" font="Customer Service"></ModelItem>
+    </Col>
+    <Col span='6'>
+      <ModelItem iconfont="POS 收银台" font="Cashier Desk"></ModelItem>
+    </Col>
+</Row>
+<Row>
+    <Col span='6'>
       <ModelItem iconfont="FI&CO 财务利润" font="Finance&Controlling"></ModelItem>
     </Col>
     <Col span='6'>
-      <ModelItem iconfont="FW 业务流程" font="Work Flow"></ModelItem>
+      <ModelItem iconfont="AM 固定资产" font="Asset Management"></ModelItem>
     </Col>
     <Col span='6'>
       <ModelItem iconfont="HR 人力资源" font="Human Resource"></ModelItem>
@@ -35,7 +49,7 @@
 </Row>
 <Row>
     <Col span='6'>
-      <ModelItem iconfont="MA 营销活动" font="marketing activity"  modelName="maVoucherList"></ModelItem>
+      <ModelItem iconfont="FW 业务流程" font="Work Flow"></ModelItem>
     </Col>
     <Col span='6'>
       <ModelItem iconfont="APS 数据分析" font="Analytic Platform Service"></ModelItem>
