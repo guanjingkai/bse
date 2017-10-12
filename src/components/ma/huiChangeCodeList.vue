@@ -69,6 +69,8 @@ export default {
         }, {
           title: '操作',
           key: 'voucher_title',
+          width: 120,
+          fixed: 'right',
           render: (h, params) => {
             return h('div', [
               h('Button', {

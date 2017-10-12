@@ -4,7 +4,7 @@
 
     <Form ref="formValidate" :model="thisFormValidate" :rules="thisRuleValidate" :label-width="100" style="min-width:420px;max-width:900px;">
     <Row>
-      <Col v-for="(item,key) in thisParameter" :span="getSpan(item)">
+      <Col v-for="(item,key) in thisParameter" :span="getSpan(item)" :style="getSpan(item) == 12 ? 'height:58px;':''">
       <Form-item  :label="item.title" :prop="item.key">
         <Alert v-if="item.type == 'formGroupTitle'" style="margin-left:-100px;">{{item.value}}</Alert>
         <p v-if="item.type == 'kong'" style="display:block;height:33px;"></p>
@@ -55,8 +55,14 @@
       </Col>
       <Col span="24">
       <Form-item>
-        <Button type="primary" @click="handleSubmit('thisFormValidate')">提交</Button>
-        <Button type="ghost" @click="handleReset('thisFormValidate')" style="margin-left: 8px">重置</Button>
+        <div class="actionButtons">
+          <Button type="success" @click="handleSubmit('thisFormValidate')">保存关闭</Button>
+          <Button type="primary" @click="handleReset('thisFormValidate')" style="margin-left: 8px">下一步</Button>
+          <Button type="ghost" @click="handleReset('thisFormValidate')" style="margin-left: 8px" icon="ios-refresh-empty" shape="circle"></Button>
+        </div>
+        <div class="form-reset">
+          
+        </div>
       </Form-item>
       </Col>
     </Row>
@@ -193,5 +199,14 @@
 }
 .ivu-cascader{
   max-width:360px;
+}
+.actionButtons{
+  width:300px;
+  margin:auto;
+}
+.form-reset{
+  position: absolute;
+  right:10px;
+  top:0px;
 }
 </style>

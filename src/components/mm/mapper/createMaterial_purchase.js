@@ -93,13 +93,15 @@ export default {
         jingzhong2: {
             key: "jingzhong2",
             title: "请求回执",
-            type: "input",
+            type: "radio",
+            value: [{ key: "yes", value: "是" }, { key: "on", value: "否" }],
             rule: [{ required: true, message: '请选填写联系人', trigger: 'blur' }]
         },
         jingzhong3: {
             key: "jingzhong3",
             title: "无限交货限制",
-            type: "input",
+            type: "radio",
+            value: [{ key: "yes", value: "是" }, { key: "on", value: "否" }],
             rule: [{ required: true, message: '请选填写联系人', trigger: 'blur' }]
         },
     },
