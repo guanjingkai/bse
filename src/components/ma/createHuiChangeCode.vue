@@ -16,7 +16,7 @@
           },
           hui_coin: {
             key: "hui_coin",
-            title: "惠币",
+            title: "兑换惠币数量",
             type: "input",
             rule: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
           },

@@ -21,6 +21,11 @@ export default new Router({
             component: require('../components/common/login.vue')
         },
         {
+            path: '/ma_create_voucher',
+            name: 'createVoucher',
+            component: require('../components/ma/createVoucher.vue')
+        },
+        {
             path: '/mm',
             name: 'Layout',
             component: require('../components/common/layout.vue'),

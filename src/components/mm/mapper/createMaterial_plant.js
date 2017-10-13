@@ -1,5 +1,4 @@
 export default {
-export default {
     self: this,
     gridSpan: 12,
     parameter: {

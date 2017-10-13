@@ -1,5 +1,5 @@
 <template>
-  <div class="voucher-desc">
+  <div class="voucher-desc" style="width:420px;">
     <div class="desc-box">
       <div class="select-image" @click="openUploadImage(true)">
         <Icon type="image"></Icon>
@@ -10,7 +10,7 @@
       </div>
       <div class="desc-article">
         <Button type="success">确认</Button>
-        <Button type="ghost">取消</Button>f
+        <Button type="ghost">取消</Button>
       </div>
     </div>
     <div>

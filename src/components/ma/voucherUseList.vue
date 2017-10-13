@@ -61,6 +61,24 @@ export default {
         }, {
           title: '兑换时间',
           key: 'change_time',
+        }, {
+          title: '操作',
+          key: 'voucher_title',
+          render: (h, params) => {
+            return h('div', [
+              h('Button', {
+                props: {
+                  type: 'text',
+                  size: 'small'
+                },
+                on:{
+                  click:()=>{
+                    this.testFunction()
+                  }
+                }
+              }, '查看'),
+            ]);
+          }
         }
       ]
     }
