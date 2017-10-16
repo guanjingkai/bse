@@ -45,6 +45,7 @@ export default {
         {
           title: '卡券名称',
           key: 'voucher_title',
+          fixed: 'left',
           width: 200
         }, {
           title: '卡券类型',

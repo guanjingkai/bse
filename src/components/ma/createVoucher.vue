@@ -14,6 +14,7 @@
   import ActiveTime from './component/activeTime'
   import VoucherDesc from './component/voucherDesc'
   import VoucherPage from './component/voucherPage'
+  import VoucherUseCondition from './component/voucherUseCondition'
   export default {
     data() {
       return {
@@ -80,8 +81,9 @@
           },
           restriction: {
             key: "restriction",
-            title: "使用限制",
-            type: "input",
+            title: "使用条件",
+            type: "component",
+            component:VoucherUseCondition,
             rule: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
           },
           industry: {
