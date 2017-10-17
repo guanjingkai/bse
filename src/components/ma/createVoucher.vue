@@ -53,12 +53,6 @@
             gridSpan:24,
             rule: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
           },
-          instructions: {
-            key: "instructions",
-            title: "操作指南",
-            type: "textarea",
-            rule: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
-          },
           cover: {
             key: "cover",
             title: "封面",
@@ -85,16 +79,6 @@
             type: "component",
             component:VoucherUseCondition,
             rule: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
-          },
-          industry: {
-            key: "industry",
-            title: "行业",
-            type: "select",
-            value: [{key: "canyin", value: "餐饮"}, {key: "ertong", value: "儿童"}, {
-              key: "tiyu",
-              value: "体育"
-            }, {key: "wenchuang", value: "文创"}, {key: "lingshou", value: "零售"}],
-            rule: [{required: true, message: '请选选择行业', trigger: 'change'}]
           },
           desc: {
             key: "desc",

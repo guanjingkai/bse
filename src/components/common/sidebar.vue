@@ -47,10 +47,7 @@
                       title:"供应商",
                       childmenu:{
                         createSupplier:mainMenuConfig['mmcreateSupplier'],
-                        supplierList:{
-                          key:"",
-                          title:"供应商列表",
-                        }
+                        supplierList:mainMenuConfig['mmsupplierList']
                       }
                     },
                     purchaselManager:{

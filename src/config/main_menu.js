@@ -27,6 +27,11 @@ export default {
         title: "创建供应商",
         path: "/mm/create_supplier"
     },
+    mmsupplierList: {
+        key: "mmsupplierList",
+        title: "创建供应商",
+        path: "/mm/supplier_list"
+    },
     maDashboard: {
         key: "mmDashboard",
         title: "主控台",

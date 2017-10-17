@@ -57,7 +57,8 @@
       <Form-item>
         <div class="actionButtons">
           <Button type="success" @click="handleSubmit('thisFormValidate')">保存关闭</Button>
-          <Button type="primary" @click="handleReset('thisFormValidate')" style="margin-left: 8px">下一步</Button>
+          <Button type="primary" v-if="this.type == 'own'" @click="handleSubmit('thisFormValidate')">保存新增</Button>
+          <Button type="primary" v-if="this.type == 'tab'" @click="handleReset('thisFormValidate')" style="margin-left: 8px">下一步</Button>
           <Button type="ghost" @click="handleReset('thisFormValidate')" style="margin-left: 8px" icon="ios-refresh-empty" shape="circle"></Button>
         </div>
         <div class="form-reset">
@@ -97,6 +98,10 @@
           },id: {
               default: function () {
                   return null
+              }
+          },type: {
+              default: function () {
+                  return "own"
               }
           },parameter: {
               default: function () {

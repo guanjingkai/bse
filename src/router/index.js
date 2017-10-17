@@ -41,6 +41,10 @@ export default new Router({
                 path: 'material_list',
                 name: 'materialList',
                 component: require('../components/mm/materialList.vue')
+            }, {
+                path: 'supplier_list',
+                name: 'supplierList',
+                component: require('../components/mm/supplierList.vue')
             }]
         },
         {
