@@ -17,9 +17,16 @@ export default {
         },
         materialType1: {
             key: "materialType1",
-            title: "科目组",
-            type: "select",
-            value: [{ key: "roh", value: "原材料" }, { key: "halb", value: "半成品" }, { key: "fert", value: "成本" }, { key: "zfsf", value: "鲜冻品" }, { key: "unbw", value: "未估价物料" }, { key: "nalg", value: "非存储物料" }, { key: "verp", value: "包装" }, { key: "zves", value: "维护装配" }, { key: "jingpin", value: "竞争对手产品" }],
+            title: "合作方式",
+            type: "radio",
+            value: [{ key: "roh", value: "购销" }, { key: "halb", value: "联营" }, { key: "fert", value: "代销" }],
+            rule: [{ required: true, message: '请选选择行业', trigger: 'change' }]
+        },
+        state: {
+            key: "state",
+            title: "状态",
+            type: "radio",
+            value: [{ key: "roh", value: "正常" }, { key: "halb", value: "停用" }],
             rule: [{ required: true, message: '请选选择行业', trigger: 'change' }]
         }
     },

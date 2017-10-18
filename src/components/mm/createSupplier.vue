@@ -1,4 +1,54 @@
 <template>
+<Row>
+    <Row type="flex" style="margin:15px 0;">
+      <Col style="width:200px;">
+        <img width="120px" src="https://file.iviewui.com/dist/76ecb6e76d2c438065f90cd7f8fa7371.png">
+      </Col>
+      <Col style="width:calc(100% - 200px)">
+        <Row>
+          <Col span="6">
+            <span class="brand-title">供应商:来跑吧水吧</span>
+          </Col>
+          <Col span="6">
+            <span class="brand-title">供应商编码:ABK1001</span>
+          </Col>
+          <Col span="6">
+          <span class="brand-title">联系人：张三</span>
+          </Col>
+          <Col span="6">
+          <span class="brand-title">联系电话:18888888888</span>
+          </Col>
+        </Row>
+        <Row>
+          <Col span="6">
+          <span class="brand-title">主营类目:零售-便利</span>
+          </Col>
+          <Col span="6">
+          <span class="brand-title">物料数量:15</span>
+          </Col>
+          <Col span="6">
+          <span class="brand-title">合作方式:联营</span>
+          </Col>
+          <Col span="6">
+          <span class="brand-title">采购组:华南采购组</span>
+          </Col>
+        </Row>
+        <Row>
+          <Col span="6">
+          <span class="brand-title">最后供货时间:2017-05-11</span>
+          </Col>
+          <Col span="6">
+          <span class="brand-title">状态:正常</span>
+          </Col>
+          <Col span="6">
+          <span class="brand-title">所在地:黑龙江-哈尔滨</span>
+          </Col>
+          <Col span="6">
+          <span class="brand-title">邮箱:leiq@gomate.com</span>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
   <Tabs value="name0" :animated="false">
     <Tab-pane label="初始化" name="name0">
       <CommonForm :model="createSupplierInit"></CommonForm>
@@ -15,6 +65,7 @@
     </Tab-pane>
     <Tab-pane label="采购记录" name="name5">采购记录</Tab-pane>
   </Tabs>
+  </Row>
 </template>
 <script>
   import Form from '../common/form'
@@ -38,3 +89,11 @@
     }
   }
 </script>
+<style>
+.brand-title{
+  font-size:14px;
+  display:block;
+  height:40px;
+  line-height:40px;
+}
+</style>

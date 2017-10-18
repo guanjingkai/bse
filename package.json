@@ -5,7 +5,7 @@
     "author": "雷丘 <188869727@qq.com>",
     "private": true,
     "scripts": {
-        "dev": "node build/dev-server.js --host 10.10.1.58",
+        "dev": "node build/dev-server.js",
         "start": "node build/dev-server.js",
         "build": "node build/build.js",
         "build:mac": "NODE_ELECTRON=true npm run build && electron-packager . bse --platform=darwin --out ./dist/$npm_package_version --overwrite --ignore=node_modules/* --ignore=.git --ignore=dist/$npm_package_version",

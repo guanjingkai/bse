@@ -53,8 +53,11 @@ export default {
         title: '物料组',
         key: 'materialGroup',
     }, {
-        title: '上次供货商',
+        title: '分成比',
         key: 'lastSupplier',
+        render: (h, params) => {
+            return h('span', {},'20%');
+        }
     }, {
         title: '类目',
         key: 'industryName',
