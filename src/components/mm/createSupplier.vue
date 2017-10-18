@@ -2,7 +2,7 @@
 <Row>
     <Row type="flex" style="margin:15px 0;">
       <Col style="width:200px;">
-        <img width="120px" src="https://file.iviewui.com/dist/76ecb6e76d2c438065f90cd7f8fa7371.png">
+        <img width="120px" src="https://cn.vuejs.org/images/logo.png">
       </Col>
       <Col style="width:calc(100% - 200px)">
         <Row>

@@ -52,7 +52,7 @@
               雷丘      
             </span>
           </div>
-          <Avatar class="user-avatar" src="https://file.iviewui.com/dist/76ecb6e76d2c438065f90cd7f8fa7371.png"/>
+          <Avatar class="user-avatar" src="https://cn.vuejs.org/images/logo.png"/>
         </i-col>
       </Row>
     </Menu>
