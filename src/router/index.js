@@ -71,7 +71,19 @@ export default new Router({
                 path: 'voucher_use_list',
                 name: 'voucherUseList',
                 component: require('../components/ma/voucherUseList.vue')
+            }, {
+                path: 'vip_data',
+                name: 'vipData',
+                component: require('../components/ma/vipData.vue')
             }]
+        },
+        {
+            path:'es',
+            name: 'Layout',
+            component: require('../components/common/layout.vue'),
+            children:[
+                
+            ]
         }
     ]
 })

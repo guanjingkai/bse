@@ -18,7 +18,7 @@ Vue.prototype.router = router;
 Vue.prototype.$http = axios;
 // Vue.prototype.Tab=Tab.methods;
 Vue.prototype.productionUrl = 'https://server.chungold.com:7002/';
-Vue.prototype.mockUrl = 'http://www.easy-mock.com/mock/59dad6209d342f449f30e718/bse/';
+Vue.prototype.mockUrl = 'http://dsn.apizza.cc/mock/d63a217d289b5f3488b9c2b8780df76b/';
 Vue.prototype.serverUrl = Vue.prototype.mockUrl;
 import low from 'lowdb'
 import LocalStorage from 'lowdb/adapters/LocalStorage'

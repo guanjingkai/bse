@@ -126,6 +126,17 @@
                         maBigScreen:mainMenuConfig['maBigScreen']
                       }
                     },
+                    maVip:{
+                      key:"maVip",
+                      title:"会员",
+                      childmenu:{
+                        maVipData:mainMenuConfig['maVipData'],
+                        maVipList:mainMenuConfig['maVipList'],
+                        maVipSetting:mainMenuConfig['maVipSetting'],
+                        maVipWechat:mainMenuConfig['maVipWechat'],
+                        maVipAlipay:mainMenuConfig['maVipAlipay']
+                      }
+                    },
                     maVoucher:{
                       key:"maVoucher",
                       title:"卡券",

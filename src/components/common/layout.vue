@@ -4,18 +4,18 @@
       <Row type="flex">
         <i-col class-name="main-left" style="overflow:hidden">
           <div class="layout-logo" @click="backMain()">
-            <img src="static/images/logo.png">
+            <img src="static/images/logo2.png">
           </div>
         </i-col>
         <i-col class-name="header-center">
           <div class="layout-nav">
             <Menu-item name="1">
               <Icon type="ios-navigate"></Icon>
-              MM物料仓储
+              MA营销活动
             </Menu-item>
             <Menu-item name="2">
               <Icon type="ios-keypad"></Icon>
-              APS数据分析
+              WMS仓储管理
             </Menu-item>
             <Menu-item name="3">
               <Icon type="arrow-graph-up-right"></Icon>
@@ -23,11 +23,11 @@
             </Menu-item>
             <Menu-item name="4">
               <Icon type="ios-analytics"></Icon>
-              FW流程管理
+              MM物料仓储
             </Menu-item>
             <Menu-item name="5">
               <Icon type="ios-paper"></Icon>
-              MA营销活动
+              OMS订单管理
             </Menu-item>
           </div>
         </i-col>
@@ -158,7 +158,7 @@ export default {
 
 .layout-logo {
   width: 180px;
-  margin-top: 4px;
+  margin-top: 0px;
   margin-left: 30px;
   height: 60px;
   float: left;
@@ -166,8 +166,8 @@ export default {
 }
 
 .layout-logo img {
-  height: 36px;
-  margin-top: 8px;
+  height: 48px;
+  margin-top: 6px;
   display: inline-block;
   float: left;
 }

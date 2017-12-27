@@ -26,12 +26,6 @@
             type: "input",
             rule: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
           },
-          hui_coin: {
-            key: "hui_coin",
-            title: "惠币",
-            type: "input",
-            rule: [{required: true, message: '姓名不能为空', trigger: 'blur'}]
-          },
           cash: {
             key: "cash",
             title: "原价",

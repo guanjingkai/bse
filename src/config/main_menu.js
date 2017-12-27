@@ -44,12 +44,12 @@ export default {
     },
     maCreateVoucher: {
         key: "maCreateVoucher",
-        title: "卡券创建",
+        title: "创建优惠券",
         path: "/ma/create_voucher"
     },
     maVoucherList: {
         key: "maVoucherList",
-        title: "卡券管理",
+        title: "优惠券管理",
         path: "/ma/voucher_list"
     },
     maVoucherValidate: {
@@ -59,7 +59,7 @@ export default {
     },
     maVoucherAdvertising: {
         key: "maVoucherAdvertising",
-        title: "卡券投放",
+        title: "优惠券投放",
         path: "/mm/big_screen"
     },
     maVoucherReport: {
@@ -81,5 +81,30 @@ export default {
         key: "maVoucherUseList",
         title: "核销记录",
         path: "/ma/voucher_use_list"
+    },
+    maVipData: {
+        key: "maVipData",
+        title: "数据一览",
+        path: "/ma/vip_data"
+    },
+    maVipList: {
+        key: "maVipList",
+        title: "会员列表",
+        path: "/ma/vip_list"
+    },
+    maVipSetting: {
+        key: "maVipSetting",
+        title: "会员卡设置",
+        path: "/ma/vip_setting"
+    },
+    maVipWechat: {
+        key: "maVipWechat",
+        title: "同步卫星卡包",
+        path: "/ma/vip_wechat"
+    },
+    maVipAlipay: {
+        key: "maVipAlipay",
+        title: "同步支付宝卡包",
+        path: "/ma/vip_alipay"
     }
 };
