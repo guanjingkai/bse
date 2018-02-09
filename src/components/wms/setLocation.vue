@@ -154,7 +154,7 @@
                                 }, 
                                 { value: 'wangfujing6', label: '存储区',
                                     children: [
-                                        { value: 'gugong', label: '大润发专用' ,
+                                        { value: 'gugong', label: '大润发专用1' ,
                                             children: [
                                                 { value: 'gugong', label: '通道A' }, 
                                                 { value: 'tiantan', label: '通道B' }, 
