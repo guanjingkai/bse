@@ -2,7 +2,7 @@
 <div>
 <Row>
   <Col>
-    <ModelItem iconfont="新零售管理系统BSE" font="Business Service Expert"></ModelItem>
+    <ModelItem iconfont="豹便利管理系统" font="Business Service Expert"></ModelItem>
   </Col>
 </Row>
 <Row>

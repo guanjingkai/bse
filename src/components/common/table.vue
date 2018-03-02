@@ -1,7 +1,8 @@
 <template>
-  <div style="margin-top:10px;">
+  <div>
     <Row type="flex">
-      <Col span="18">
+    <div  id="table-top" style="margin-bottom: 10px; overflow: hidden;">
+      <Col span="24">
         <Row type="flex" class-name="table-search">
           <Col class-name="table-col" v-for="(item, key) in thisSearchConfig">
             <Input v-if="item.type == 'input'" v-model="item.value" :placeholder="item.title" :style="{'width':item.hasOwnProperty('width')?item.width>0?item.width+'px':'150px':'150px'}"></Input>
@@ -21,15 +22,15 @@
           </Col>
         </Row>
       </Col>    
-      
-      <Col span="6">
-        <div style="float:right;">
+      <Col span="24">
+        <div style="float:left;">
           <slot name="customAciton"></slot>
         </div>
       </Col>
+      </div>
     </Row>
-    <Table highlight-row :context="self" :data="thisTableData" :columns="thisTableColumns" stripe></Table>
-    <div style="margin: 10px;overflow: hidden">
+    <Table highlight-row :height="tableHeigth" :context="self" :data="thisTableData" :columns="thisTableColumns" stripe></Table>
+    <div style="margin-top: 10px;overflow: hidden"  id="table-bottom">
       <div style="float: left;">
         <Button type="primary" size="large" v-for="(action, key) in batchAction" @click="exportData(1)"><Icon type="ios-download-outline"></Icon> {{action.title}}</Button>
         <Button type="primary" size="large" @click="exportData(1)"><Icon type="ios-download-outline"></Icon> 导出原始数据</Button>
@@ -56,6 +57,7 @@ export default {
   data() {
     return {
       self: this,
+      tableHeigth:this.$store.state.client.height,
       thisApi:'',
       spinShow: true,
       thisModel: '',
@@ -131,6 +133,18 @@ export default {
       }else{
         this.thisTableData    = thisData;
       }
+      setTimeout(() => {
+          this.setTableHeigth();
+       }, 10);
+    },
+    setTableHeigth(){
+      var topHeigth = document.getElementById('table-top').offsetHeight;
+      var bottomHeigth = document.getElementById('table-bottom').offsetHeight;
+      this.tableHeigth = this.$store.state.client.height - 180 - topHeigth - bottomHeigth;
+      window.onresize = function () {
+        this.tableHeigth = this.$store.state.client.height - 180 - topHeigth - bottomHeigth;
+      };
+
     },
     getData() {
       var _self = this;

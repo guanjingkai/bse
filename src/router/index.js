@@ -100,14 +100,19 @@ export default new Router({
                     component: require('../components/wms/setLocationType.vue')
                 },
                 {
-                    path: 'output_replenish',
+                    path: 'output_wait_pick',
                     name: 'setList',
-                    component: require('../components/wms/outputReplenish.vue')
+                    component: require('../components/wms/outputWaitPick.vue')
                 },
                 {
                     path: 'output_wave',
                     name: 'setList',
                     component: require('../components/wms/outputWave.vue')
+                },
+                {
+                    path: 'output_pick_list',
+                    name: 'setList',
+                    component: require('../components/wms/outputPickList.vue')
                 },
                 {
                     path: 'output_pick',

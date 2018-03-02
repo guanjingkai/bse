@@ -1,128 +1,94 @@
 <template>
-  <div>
-    <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig">
-      <div slot="customAciton">
-          <Button type="primary" icon="ios-refresh-empty" @click="openCreateVoucher()">分拣验货</Button>
-      </div>
-    </CommonTable>
-  </div>
+  <Row>
+    <Col span="6" style="padding-right:15px;">
+      <CommonForm :parameter="parameter" :formValidate="formValidate" :formAction="formAction" :gridSpan="gridSpan">
+        <div slot="customAciton">
+          <Button type="primary" icon="ios-refresh-empty" @click="openCreateWave(true)">确认</Button>
+        </div>
+      </CommonForm>
+      <CommonForm :parameter="parameter2" :formValidate="formValidate" :formAction="formAction" :gridSpan="gridSpan">
+        <div slot="customAciton">
+          <Button type="primary" icon="ios-refresh-empty" @click="openCreateWave(true)">绑定</Button>
+        </div>
+      </CommonForm>
+    </Col>
+    <Col span="18">、
+      <Tabs type="card" :animated="false">
+        <TabPane label="分拣">标签
+        </TabPane>
+        <TabPane :label="tabsLabel">标签
+        </TabPane>
+        <TabPane v-for="tab in tabs" :key="tab" :label="'分捡箱' + tab">标签{{ tab }}</TabPane>
+        
+        <Button type="ghost" @click="handleTabsAdd" size="small" slot="extra">增加分捡箱</Button>
+    </Tabs>
+    </Col>
+  </Row>
 </template>
 <script>
 import Table from '../common/table';
+import Form from '../common/form';
 export default {
   data() {
     return {
       self: this,
-      api: {
-        url: "/wms/pick/1"
-      },
-      searchConfig:{
-        orderId:{
-          title:'分检单号',
-          key:'orderId',
-          type:'input',
-          width:150,
-          value:''
-        },
-        nameaaa:{
-          title:'补货单号',
-          key:'nameaaa',
-          type:'input',
-          width:150,
-          value:''
-        },
-        nameaaa1:{
-          title:'波次号',
-          key:'nameaaa1',
-          type:'input',
-          width:150,
-          value:''
-        },
-        payTools:{
-          title:'状态',
-          key:'payType',
-          type:'select',
-          data:[{ key: "canyin", value: "待拣货" }, { key: "ertong", value: "已验货" }],
-          width:100,
-          value:''
-        }
-      },
-      tableData: [],
-      tableColumns: [
-        {
-          title: '分拣单号',
-          key: 'pickNumber',
-        },{
-          title: '状态',
-          key: 'pickNumber',
-          render: (h, params) => {
-                            return h('div', [
-                                h('Button', {
-                                    props: {
-                                        type: 'primary',
-                                        size: 'small'
-                                    },
-                                    style: {
-                                        marginRight: '5px'
-                                    },
-                                    on: {
-                                        click: () => {
-                                            
-                                        }
-                                    }
-                                }, '待拣货')
-                            ]);
-                        }
-        },{
-          title: '波次号',
-          key: 'waveNumber',
-        }, {
-          title: '仓库',
-          key: 'wavehose'
-        }, {
-          title: '补货单号',
-          key: 'replenishNumber',
-        }, {
-          title: '商品数量',
-          key: 'goodsNumber',
-        },{
-          title: '生成时间',
-          key: 'createTime',
-          width: 200,
-          sortable: true,
-        }, {
-          title: '操作',
-          key: 'brandStatus',
-          width: 180,
-          fixed: 'right',
-          render: (h, params) => {
-            return h('div', [
-              h('Button', {
-                props: {
-                  type: 'text',
-                  size: 'small'
-                },
-                on:{
-                  click:()=>{
-                    this.testFunction()
+      formAction:false,
+      tabs:2,
+      tabsLabel: (h) => {
+          return h('div', [
+              h('span', '未分拣'),
+              h('Badge', {
+                  props: {
+                      count: 13
                   }
-                }
-              }, '打印分拣单'),
-              h('Button', {
-                props: {
-                  type: 'text',
-                  size: 'small'
-                }
-              }, '查看')
-            ]);
-          }
-
+              })
+          ])
+      },
+      parameter: {
+        group1: {
+            key: "group1",
+            title: "",
+            type: "formGroupTitle",
+            value: "开始分拣"
+        },
+        strategy_name: {
+            key: "strategy_name",
+            title: "分拣单编号",
+            type: "input",
+            rule: [{required: true, message: '分拣单编号不能为空', trigger: 'blur'}]
+        },
+        sku69: {
+            key: "sku69",
+            title: "商品编码/SKU",
+            type: "input",
+            rule: [{required: true, message: '商品编码不能为空', trigger: 'blur'}]
         }
-      ]
+      },
+      parameter2: {
+        group1: {
+            key: "group1",
+            title: "",
+            type: "formGroupTitle",
+            value: "分捡箱绑定"
+        },
+        strategy_name: {
+            key: "strategy_name",
+            title: "1号分捡箱",
+            type: "input",
+            rule: [{required: true, message: '分拣单编号不能为空', trigger: 'blur'}]
+        },
+        sku69: {
+            key: "sku69",
+            title: "2号分捡箱",
+            type: "input",
+            rule: [{required: true, message: '商品编码不能为空', trigger: 'blur'}]
+        }
+      }                 
     }
   },
   components: {
-    "CommonTable": Table
+    "CommonTable": Table,
+    "CommonForm":Form
   },
   mounted() {
     this.getData();
@@ -136,6 +102,9 @@ export default {
       }, response => {
         // error callback
       })
+    },
+    handleTabsAdd () {
+      this.tabs ++;
     },
     testFunction(){
       this.openPage('home1','sdifk1');

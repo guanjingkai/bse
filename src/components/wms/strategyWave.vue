@@ -2,14 +2,17 @@
   <div>
     <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig">
       <div slot="customAciton">
-          <Button type="primary" icon="ios-refresh-empty" @click="openCreateVoucher()">新建波次策略(预配)</Button>  
+          <Button type="primary" icon="ios-refresh-empty" @click="openCreateWave(true)">新建波次策略(预配)</Button>  
           <Button type="primary" icon="ios-refresh-empty" @click="openCreateVoucher()">新建波次策略(普通)</Button>     
       </div>
     </CommonTable>
+    
+    <newWaveStrategy :modalShow="newWaveStrategyShow" @new-wave-show="openCreateWave"></newWaveStrategy>
   </div>
 </template>
 <script>
 import Table from '../common/table';
+import newWaveStrategy from './component/newWaveStrategy.vue';
 export default {
   data() {
     return {
@@ -26,10 +29,18 @@ export default {
           value:''
         },
         payTools:{
-          title:'窗口类型',
+          title:'策略类型',
           key:'payType',
           type:'select',
-          data:[{ key: "canyin", value: "补货单" }, { key: "ertong", value: "调拨出库单" }, { key: "ertong", value: "移库出库单" }],
+          data:[{ key: "canyin", value: "普通" }, { key: "ertong", value: "预配" }],
+          width:100,
+          value:''
+        },
+        payTools1:{
+          title:'优先级',
+          key:'payType',
+          type:'select',
+          data:[{ key: "canyin", value: "1" }, { key: "ertong", value: "2" }, { key: "ertong1", value: "3" }, { key: "33", value: "4" }],
           width:100,
           value:''
         }
@@ -100,11 +111,13 @@ export default {
           }
 
         }
-      ]
+      ],
+      newWaveStrategyShow:false
     }
   },
   components: {
-    "CommonTable": Table
+    "CommonTable": Table,
+    "newWaveStrategy":newWaveStrategy
   },
   mounted() {
     this.getData();
@@ -119,9 +132,8 @@ export default {
         // error callback
       })
     },
-    testFunction(){
-      this.openPage('home1','sdifk1');
-      alert(123)
+    openCreateWave(isShow){
+      this.newWaveStrategyShow = isShow;
     }
   }
 }

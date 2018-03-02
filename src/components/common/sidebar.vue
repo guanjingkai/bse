@@ -1,5 +1,5 @@
 <template>
-  <Menu theme="dark" :active-name="thisMenu.key" width="auto" :open-names="['index','platformSetting','brandManage','financialManage','userManage']"  @on-select="createTab" style="height: 100%">
+  <Menu theme="dark" :active-name="thisMenu.key" width="auto"   @on-select="createTab" style="height: 100%">
     <Submenu name="index" v-for="item in mainMenu[thisModel]">
       <template slot="title">
         <Icon type="ios-navigate"></Icon>
@@ -193,8 +193,9 @@
                       key:"wmsInput",
                       title:"销货出库",
                       childmenu:{
-                        wmsOutputReplenish:mainMenuConfig['wmsOutputReplenish'],
+                        wmsOutputWaitPick:mainMenuConfig['wmsOutputWaitPick'],
                         wmsOutputWave:mainMenuConfig['wmsOutputWave'],
+                        wmsOutputPickList:mainMenuConfig['wmsOutputPickList'],
                         wmsOutputPick:mainMenuConfig['wmsOutputPick'],
                         wmsOutputPack:mainMenuConfig['wmsOutputPack'],
                         wmsOutputDo:mainMenuConfig['wmsOutputDo'],

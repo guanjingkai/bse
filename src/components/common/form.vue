@@ -2,7 +2,7 @@
   <Row>
     <Col span="24">
 
-    <Form ref="formValidate" :model="thisFormValidate" :rules="thisRuleValidate" :label-width="100" style="min-width:420px;max-width:900px;">
+    <Form ref="formValidate" :model="thisFormValidate" :rules="thisRuleValidate" :label-width="100" style="min-width:220px;max-width:900px;">
     <Row>
       <Col v-for="(item,key) in thisParameter" :span="getSpan(item)" :style="getSpan(item) == 12 ? 'height:58px;':''">
       <Form-item  :label="item.title" :prop="item.key">
@@ -12,6 +12,7 @@
           <span v-if="item.prepend" slot="prepend">{{item.prepend}}</span>
           <span v-if="item.append" slot="append">{{item.append}}</span>
         </Input>
+        <InputNumber :max="10" :min="1" v-if="item.type == 'input-number'" v-model="thisFormValidate[item.key]" :placeholder="'请输入'+item.title"  style="max-width:360px;"></InputNumber>
         <Input v-if="item.type == 'textarea'"  v-model="thisFormValidate[item.key]" type="textarea" :autosize="{minRows: 2,maxRows: 5}" :placeholder="'请输入'+item.title"></Input>
         <Select v-if="item.type == 'select'" v-model="thisFormValidate[item.key]":placeholder="'请选择'+item.title" :placement="item.hasOwnProperty('placement') ? item.placement :'bottom'"  style="max-width:360px;">
           <Option v-for="(option,key) in item.value" :value="option.key">{{option.value}}</Option>
@@ -22,7 +23,8 @@
         <Checkbox-group v-if="item.type == 'checkbox'" v-model="thisFormValidate[item.key]">
           <Checkbox v-for="(checkbox,key) in item.value" :label="checkbox.value"></Checkbox>
         </Checkbox-group>
-        <DatePicker  v-if="item.type == 'date-time-range'" type="datetimerange" :placeholder="'请选择'+item.title" v-model="thisFormValidate[item.key]" style="width: 300px"></DatePicker>
+        <DatePicker  v-if="item.type == 'date-time-range'" type="datetimerange" :placeholder="'请选择'+item.title" v-model="thisFormValidate[item.key]" style="max-width: 360px"></DatePicker>
+        <TimePicker  v-if="item.type == 'time-range'" type="timerange" :placeholder="'请选择'+item.title" v-model="thisFormValidate[item.key]" format="HH’mm’ss" :placement="thisFormValidate[item.placement]"  style="max-width: 360px"></TimePicker>
         <Row v-if="item.type == 'date-time'">
           <Col span="11">
           <Form-item :prop="item.key">
@@ -57,15 +59,13 @@
       </Form-item>
       </Col>
       <Col span="24">
-      <Form-item v-if="formAction">
+      <Form-item>
         <div class="actionButtons">
-          <Button type="success" @click="handleSubmit('thisFormValidate')">保存关闭</Button>
-          <Button type="primary" v-if="this.type == 'own'" @click="handleSubmit('thisFormValidate')">保存新增</Button>
-          <Button type="primary" v-if="this.type == 'tab'" @click="handleReset('thisFormValidate')" style="margin-left: 8px">下一步</Button>
-          <Button type="ghost" @click="handleReset('thisFormValidate')" style="margin-left: 8px" icon="ios-refresh-empty" shape="circle"></Button>
-        </div>
-        <div class="form-reset">
-          
+          <Button v-if="formAction" type="success" @click="handleSubmit('thisFormValidate')">保存关闭</Button>
+          <Button type="primary" v-if="this.type == 'own' && formAction" @click="handleSubmit('thisFormValidate')">保存新增</Button>
+          <Button type="primary" v-if="this.type == 'tab' && formAction" @click="handleReset('thisFormValidate')" style="margin-left: 8px">下一步</Button>
+          <Button v-if="formAction" type="ghost" @click="handleReset('thisFormValidate')" style="margin-left: 8px" icon="ios-refresh-empty" shape="circle"></Button>
+          <slot name="customAciton"></slot>
         </div>
       </Form-item>
       </Col>
@@ -213,7 +213,7 @@
   max-width:360px;
 }
 .actionButtons{
-  width:300px;
+  width:220px;
   margin:auto;
 }
 .form-reset{

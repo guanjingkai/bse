@@ -5,7 +5,7 @@
         <i-col class-name="main-left" style="overflow:hidden">
           <div class="layout-logo" @click="backMain()">
             <!--<img src="static/images/logo2.png">-->
-            <span class="bse-title">新零售管理系统BSE</span>
+            <span class="bse-title">豹便利管理系统</span>
           </div>
         </i-col>
         <i-col class-name="header-center">

@@ -173,15 +173,20 @@ export default {
         title: "其他入库",
         path: "/wms/input_other"
     },
-    wmsOutputReplenish: {
-        key: "wmsOutputReplenish",
-        title: "补货列表",
-        path: "/wms/output_replenish"
+    wmsOutputWaitPick: {
+        key: "wmsOutputWaitPick",
+        title: "待分配",
+        path: "/wms/output_wait_pick"
     },
     wmsOutputWave: {
         key: "wmsOutputWave",
         title: "波次管理",
         path: "/wms/output_wave"
+    },
+    wmsOutputPickList: {
+        key: "wmsOutputPickList",
+        title: "分拣列表",
+        path: "/wms/output_pick_list"
     },
     wmsOutputPick: {
         key: "wmsOutputPick",
@@ -190,7 +195,7 @@ export default {
     },
     wmsOutputPack: {
         key: "wmsOutputPack",
-        title: "订单包装",
+        title: "包装验货",
         path: "/wms/output_pack"
     },
     wmsOutputDo: {
