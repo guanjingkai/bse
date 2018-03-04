@@ -127,11 +127,43 @@ export default new Router({
             ]
         },
         {
-            path:'es',
+            path:'/es',
             name: 'Layout',
             component: require('../components/common/layout.vue'),
             children:[
                 
+            ]
+        },
+        {
+            path:'/tms',
+            name: 'Layout',
+            component: require('../components/common/layout.vue'),
+            children:[
+                {
+                    path: 'file_carrier',
+                    name: 'fileCarrier',
+                    component: require('../components/tms/fileCarrier.vue')
+                },{
+                    path: 'file_driver',
+                    name: 'tmsFileDriver',
+                    component: require('../components/tms/fileDriver.vue')
+                },{
+                    path: 'order_wait',
+                    name: 'tmsFileDriver',
+                    component: require('../components/tms/orderWait.vue')
+                },{
+                    path: 'delivery',
+                    name: 'tmsFileDriver',
+                    component: require('../components/tms/delivery.vue')
+                },{
+                    path: 'trading_area',
+                    name: 'tradingArea',
+                    component: require('../components/tms/tradingArea.vue')
+                },{
+                    path: 'data_hot',
+                    name: 'dataHot',
+                    component: require('../components/tms/dataHot.vue')
+                }
             ]
         }
     ]

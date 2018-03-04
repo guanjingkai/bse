@@ -232,5 +232,45 @@ export default {
         key: "wmsStrategyArea",
         title: "区域匹配",
         path: "/wms/strategy_area"
+    },
+    tmsFileCarrier: {
+        key: "tmsFileCarrier",
+        title: "承运商档案",
+        path: "/tms/file_carrier"
+    },
+    tmsFileTraffic: {
+        key: "tmsFileTraffic",
+        title: "车辆档案",
+        path: "/tms/file_traffic"
+    },
+    tmsFileDriver: {
+        key: "tmsFileDriver",
+        title: "司机档案",
+        path: "/tms/file_driver"
+    },
+    tmsOrderWait: {
+        key: "tmsOrderWait",
+        title: "待确认订单",
+        path: "/tms/order_wait"
+    },
+    tmsDelivery: {
+        key: "tmsDelivery",
+        title: "物流发货单",
+        path: "/tms/delivery"
+    },
+    tmsOrderList: {
+        key: "tmsOrderList",
+        title: "历史订单",
+        path: "/tms/order_list"
+    },
+    tmsTradingArea: {
+        key: "tmsTradingArea",
+        title: "蜂窝网络",
+        path: "/tms/trading_area"
+    },
+    tmsDataHot: {
+        key: "tmsDataHot",
+        title: "热力图",
+        path: "/tms/data_hot"
     }
 };

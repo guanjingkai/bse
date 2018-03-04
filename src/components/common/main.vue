@@ -28,7 +28,7 @@
       <ModelItem iconfont="MA 营销活动" font="marketing activity"  modelName="maVoucherList"></ModelItem>
     </Col>
     <Col span='6'>
-      <ModelItem iconfont="TMS 运输配送" font="Transport Management"></ModelItem>
+      <ModelItem iconfont="TMS 运输配送" font="Transport Management"  modelName="tmsFileCarrier"></ModelItem>
     </Col>
 
     <Col span='6'>

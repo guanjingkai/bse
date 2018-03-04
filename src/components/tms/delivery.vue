@@ -1,10 +1,6 @@
 <template>
   <div>
-    <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig">
-      <div slot="customAciton">
-          <Button type="primary" icon="ios-refresh-empty" @click="openCreateVoucher()">分拣验货</Button>
-      </div>
-    </CommonTable>
+    <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig"></CommonTable>
   </div>
 </template>
 <script>
@@ -14,35 +10,28 @@ export default {
     return {
       self: this,
       api: {
-        url: "/wms/pick/1"
+        url: "/tms/delivery/list"
       },
       searchConfig:{
         orderId:{
-          title:'分检单号',
+          title:'发货单ID',
           key:'orderId',
           type:'input',
           width:150,
           value:''
         },
         nameaaa:{
-          title:'补货单号',
+          title:'点位信息',
           key:'nameaaa',
           type:'input',
           width:150,
           value:''
         },
-        nameaaa1:{
-          title:'波次号',
-          key:'nameaaa1',
-          type:'input',
-          width:150,
-          value:''
-        },
         payTools:{
-          title:'状态',
+          title:'承运商',
           key:'payType',
           type:'select',
-          data:[{ key: "canyin", value: "待拣货" }, { key: "ertong", value: "已验货" }],
+          data:[{ key: "canyin", value: "云鸟" }, { key: "ertong", value: "达达" }, { key: "ertong1", value: "宅急送" }],
           width:100,
           value:''
         }
@@ -50,11 +39,50 @@ export default {
       tableData: [],
       tableColumns: [
         {
-          title: '分拣单号',
-          key: 'pickNumber',
+          title: '发货单ID',
+          key: 'id',
+        }, {
+          title: '承运商',
+          key: 'carrierName'
+        }, {
+          title: '运输箱',
+          key: 'packageNumber',
+        }, {
+          title: '下单时间',
+          key: 'lastTime'
+        }, {
+          title: '发货时间',
+          key: 'pullTime'
+        }, {
+          title: '进度',
+          key: 'nowBear',
+          width:140,
+          render: (h, params) => {
+              let status;
+              if(params.row.nowBear>=0 && params.row.nowBear < 60){
+                status = 'success';
+              }else if(params.row.nowBear>=60 && params.row.nowBear < 85){
+                status = 'active';
+              }else{
+                status = 'wrong';
+              }
+              return h('div', [
+                h('Progress', {
+                  props: {
+                    percent: params.row.nowBear,
+                    status: status
+                  },
+                  on: {
+                    click: () => {
+                      
+                    }
+                  }
+                }, params.row.nowBear+"%")
+              ]);
+            }
         },{
           title: '状态',
-          key: 'pickNumber',
+          key: 'state',
           render: (h, params) => {
               return h('div', [
                   h('Button', {
@@ -70,30 +98,13 @@ export default {
                               
                           }
                       }
-                  }, '待拣货')
+                  }, '配送中')
               ]);
           }
-        },{
-          title: '波次号',
-          key: 'waveNumber',
-        }, {
-          title: '仓库',
-          key: 'wavehose'
-        }, {
-          title: '补货单号',
-          key: 'replenishNumber',
-        }, {
-          title: '商品数量',
-          key: 'goodsNumber',
-        },{
-          title: '生成时间',
-          key: 'createTime',
-          width: 200,
-          sortable: true,
         }, {
           title: '操作',
           key: 'brandStatus',
-          width: 200,
+          width: 120,
           fixed: 'right',
           render: (h, params) => {
             return h('div', [
@@ -107,19 +118,13 @@ export default {
                     this.testFunction()
                   }
                 }
-              }, '打印分拣单'),
+              }, '查看'),
               h('Button', {
                 props: {
                   type: 'text',
                   size: 'small'
                 }
-              }, '分拣'),
-              h('Button', {
-                props: {
-                  type: 'text',
-                  size: 'small'
-                }
-              }, '查看')
+              }, '编辑')
             ]);
           }
 

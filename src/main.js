@@ -9,11 +9,13 @@ import store from './store/store'
 import Tab from './core/Tab.vue'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
-
+import iviewArea from 'iview-area';
+    
 Vue.config.productionTip = false;
 Vue.use(Vuex);
 Vue.use(iView);
 Vue.use(Tab);
+Vue.use(iviewArea);
 Vue.prototype.router = router;
 Vue.prototype.$http = axios;
 // Vue.prototype.Tab=Tab.methods;

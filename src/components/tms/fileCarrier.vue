@@ -2,7 +2,7 @@
   <div>
     <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig">
       <div slot="customAciton">
-          <Button type="primary" icon="ios-refresh-empty" @click="openCreateVoucher()">分拣验货</Button>
+          <Button type="primary" icon="ios-refresh-empty" @click="openCreateWave(true)">创建承运商</Button>  
       </div>
     </CommonTable>
   </div>
@@ -14,47 +14,66 @@ export default {
     return {
       self: this,
       api: {
-        url: "/wms/pick/1"
+        url: "/tms/carrier/list"
       },
       searchConfig:{
         orderId:{
-          title:'分检单号',
+          title:'承运商ID',
           key:'orderId',
           type:'input',
           width:150,
           value:''
         },
         nameaaa:{
-          title:'补货单号',
+          title:'承运商名称',
           key:'nameaaa',
           type:'input',
           width:150,
           value:''
         },
-        nameaaa1:{
-          title:'波次号',
-          key:'nameaaa1',
-          type:'input',
-          width:150,
-          value:''
-        },
         payTools:{
-          title:'状态',
+          title:'类型',
           key:'payType',
           type:'select',
-          data:[{ key: "canyin", value: "待拣货" }, { key: "ertong", value: "已验货" }],
+          data:[{ key: "canyin", value: "落地配" }, { key: "ertong", value: "平台" }],
           width:100,
           value:''
-        }
+        },
+        payTools1:{
+          title:'状态',
+          key:'payType1',
+          type:'select',
+          data:[{ key: "canyin", value: "可用" }, { key: "ertong", value: "停用" }],
+          width:100,
+          value:''
+        },
       },
       tableData: [],
       tableColumns: [
         {
-          title: '分拣单号',
-          key: 'pickNumber',
-        },{
+          title: '承运商ID',
+          key: 'carrierId',
+        }, {
+          title: '承运商名称',
+          key: 'name',
+        }, {
+          title: '类型',
+          key: 'type'
+        }, {
+          title: '覆盖点位',
+          key: 'poiNumber',
+        }, {
+          title: '补货次数',
+          key: 'addNumber',
+        }, {
+          title: '运力',
+          key: 'capacity',
+        }, {
+          title: '最后运输',
+          key: 'lastTime'
+        }, {
           title: '状态',
-          key: 'pickNumber',
+          key: 'state',
           render: (h, params) => {
               return h('div', [
                   h('Button', {
@@ -70,30 +89,13 @@ export default {
                               
                           }
                       }
-                  }, '待拣货')
+                  }, '可用')
               ]);
           }
-        },{
-          title: '波次号',
-          key: 'waveNumber',
-        }, {
-          title: '仓库',
-          key: 'wavehose'
-        }, {
-          title: '补货单号',
-          key: 'replenishNumber',
-        }, {
-          title: '商品数量',
-          key: 'goodsNumber',
-        },{
-          title: '生成时间',
-          key: 'createTime',
-          width: 200,
-          sortable: true,
         }, {
           title: '操作',
           key: 'brandStatus',
-          width: 200,
+          width: 120,
           fixed: 'right',
           render: (h, params) => {
             return h('div', [
@@ -107,19 +109,13 @@ export default {
                     this.testFunction()
                   }
                 }
-              }, '打印分拣单'),
+              }, '查看'),
               h('Button', {
                 props: {
                   type: 'text',
                   size: 'small'
                 }
-              }, '分拣'),
-              h('Button', {
-                props: {
-                  type: 'text',
-                  size: 'small'
-                }
-              }, '查看')
+              }, '编辑')
             ]);
           }
 

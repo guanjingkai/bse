@@ -1,5 +1,5 @@
 <template>
-  <Menu theme="dark" :active-name="thisMenu.key" width="auto"   @on-select="createTab" style="height: 100%">
+  <Menu theme="dark" :active-name="thisMenu.key" width="auto" :open-names="['index','platformSetting','brandManage','financialManage','userManage']"  @on-select="createTab" style="height: 100%">
     <Submenu name="index" v-for="item in mainMenu[thisModel]">
       <template slot="title">
         <Icon type="ios-navigate"></Icon>
@@ -211,6 +211,38 @@
                         wmsStrategyInventory:mainMenuConfig['wmsStrategyInventory'],
                         wmsStrategyBatch:mainMenuConfig['wmsStrategyBatch'],
                         wmsStrategyArea:mainMenuConfig['wmsStrategyArea']
+                      }
+                    }
+                  },
+                  tms:{
+                    tmsFile:{
+                      key:"tmsFile",
+                      title:"基础档案",
+                      childmenu:{
+                        tmsFileCarrier:mainMenuConfig['tmsFileCarrier'],
+                        tmsFileDriver:mainMenuConfig['tmsFileDriver']
+                      }
+                    },
+                    tmsOrder:{
+                      key:"tmsOrder",
+                      title:"订单中心",
+                      childmenu:{
+                        tmsOrderWait:mainMenuConfig['tmsOrderWait'],
+                        tmsDelivery:mainMenuConfig['tmsDelivery']
+                      }
+                    },
+                    tmsTraffic:{
+                      key:"tmsTraffic",
+                      title:"运输中心",
+                      childmenu:{
+                        tmsTradingArea:mainMenuConfig['tmsTradingArea']
+                      }
+                    },
+                    tmsData:{
+                      key:"tmsData",
+                      title:"数据中心",
+                      childmenu:{
+                        tmsDataHot:mainMenuConfig['tmsDataHot']
                       }
                     }
                   }
