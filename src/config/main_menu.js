@@ -255,7 +255,7 @@ export default {
     },
     tmsDelivery: {
         key: "tmsDelivery",
-        title: "物流发货单",
+        title: "运输单列表",
         path: "/tms/delivery"
     },
     tmsOrderList: {
@@ -265,8 +265,13 @@ export default {
     },
     tmsTradingArea: {
         key: "tmsTradingArea",
-        title: "蜂窝网络",
+        title: "配送区域绘制",
         path: "/tms/trading_area"
+    },
+    tmsAreaList: {
+        key: "tmsAreaList",
+        title: "配送区域列表",
+        path: "/tms/area_list"
     },
     tmsDataHot: {
         key: "tmsDataHot",

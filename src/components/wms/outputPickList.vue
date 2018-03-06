@@ -2,7 +2,7 @@
   <div>
     <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig">
       <div slot="customAciton">
-          <Button type="primary" icon="ios-refresh-empty" @click="openCreateVoucher()">分拣验货</Button>
+          <Button type="primary" icon="ios-refresh-empty" @click="openCreateCarrier(true)">批量打印分拣单</Button>  
       </div>
     </CommonTable>
   </div>

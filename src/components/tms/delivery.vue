@@ -34,6 +34,14 @@ export default {
           data:[{ key: "canyin", value: "云鸟" }, { key: "ertong", value: "达达" }, { key: "ertong1", value: "宅急送" }],
           width:100,
           value:''
+        },
+        payTools:{
+          title:'状态',
+          key:'payType',
+          type:'select',
+          data:[{ key: "canyin", value: "未配送" }, { key: "ertong", value: "配送中" }, { key: "ertong1", value: "已完成" }],
+          width:100,
+          value:''
         }
       },
       tableData: [],
@@ -56,7 +64,7 @@ export default {
         }, {
           title: '进度',
           key: 'nowBear',
-          width:140,
+          width:180,
           render: (h, params) => {
               let status;
               if(params.row.nowBear>=0 && params.row.nowBear < 60){
@@ -104,7 +112,7 @@ export default {
         }, {
           title: '操作',
           key: 'brandStatus',
-          width: 120,
+          width: 160,
           fixed: 'right',
           render: (h, params) => {
             return h('div', [
@@ -115,10 +123,16 @@ export default {
                 },
                 on:{
                   click:()=>{
-                    this.testFunction()
+                    this.$Message.success('发货成功');
                   }
                 }
-              }, '查看'),
+              }, '发货'),
+              h('Button', {
+                props: {
+                  type: 'text',
+                  size: 'small'
+                }
+              }, '打印'),
               h('Button', {
                 props: {
                   type: 'text',

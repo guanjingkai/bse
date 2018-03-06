@@ -1,7 +1,7 @@
 <template>
   <div>
     <Row type="flex">
-    <div  id="table-top" style="margin-bottom: 10px; overflow: hidden;">
+    <div  id="table-top" style="margin-bottom: 10px;" v-if="searchBar">
       <Col span="24">
         <Row type="flex" class-name="table-search">
           <Col class-name="table-col" v-for="(item, key) in thisSearchConfig">
@@ -15,6 +15,8 @@
               <span slot="close">关闭</span>
             </i-switch>
             <Cascader  v-if="item.type == 'cascader'" v-model="item.value"  :placeholder="'请选择'+item.title" :data="item.data" trigger="hover" :style="{'width':item.hasOwnProperty('width')?item.width>0?item.width+'px':'150px':'150px'}"></Cascader>
+            <al-cascader v-if="item.type == 'area-cascader'" v-model="resArr" :level="item.level" :placeholder="'请选择'+item.title"/>
+            <al-selector v-if="item.type == 'area-select'" v-model="resArr" :level="item.level" :placeholder="'请选择'+item.title"/>
           </Col>
           <Col class-name="table-col" v-if="thisSearchConfig.toString() != arrayNull.toString()">
             <Button type="primary" icon="ios-search">查询</Button>
@@ -30,7 +32,7 @@
       </div>
     </Row>
     <Table highlight-row :height="tableHeigth" :context="self" :data="thisTableData" :columns="thisTableColumns" stripe></Table>
-    <div style="margin-top: 10px;overflow: hidden"  id="table-bottom">
+    <div style="margin-top: 10px;overflow: hidden" v-if="tableBottom"  id="table-bottom">
       <div style="float: left;">
         <Button type="primary" size="large" v-for="(action, key) in batchAction" @click="exportData(1)"><Icon type="ios-download-outline"></Icon> {{action.title}}</Button>
         <Button type="primary" size="large" @click="exportData(1)"><Icon type="ios-download-outline"></Icon> 导出原始数据</Button>
@@ -93,7 +95,19 @@ export default {
             default: function () {
                 return []
             }
+        },autoHeight: {
+            default: function () {
+                return []
+            }
         },batchAction: {
+            default: function () {
+                return []
+            }
+        },searchBar: {
+            default: function () {
+                return []
+            }
+        },tableBottom: {
             default: function () {
                 return []
             }
@@ -135,16 +149,22 @@ export default {
       }
       setTimeout(() => {
           this.setTableHeigth();
-       }, 10);
+      }, 10);
+      
+      
     },
     setTableHeigth(){
-      var topHeigth = document.getElementById('table-top').offsetHeight;
-      var bottomHeigth = document.getElementById('table-bottom').offsetHeight;
-      this.tableHeigth = this.$store.state.client.height - 180 - topHeigth - bottomHeigth;
-      window.onresize = function () {
+      if(this.$props.autoHeight > 0){
+        this.tableHeigth = this.$props.autoHeight+'px';
+      }else{
+        var topHeigth = document.getElementById('table-top').offsetHeight;
+        var bottomHeigth = document.getElementById('table-bottom').offsetHeight;
         this.tableHeigth = this.$store.state.client.height - 180 - topHeigth - bottomHeigth;
-      };
-
+        window.onresize = function () {
+          this.tableHeigth = this.$store.state.client.height - 180 - topHeigth - bottomHeigth;
+        };
+      }
+      
     },
     getData() {
       var _self = this;

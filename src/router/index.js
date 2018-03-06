@@ -120,6 +120,16 @@ export default new Router({
                     component: require('../components/wms/outputPick.vue')
                 },
                 {
+                    path: 'output_pack',
+                    name: 'setList',
+                    component: require('../components/wms/outputPack.vue')
+                },
+                {
+                    path: 'output_do',
+                    name: 'setList',
+                    component: require('../components/wms/outputDo.vue')
+                },
+                {
                     path: 'strategy_wave',
                     name: 'setList',
                     component: require('../components/wms/strategyWave.vue')
@@ -159,6 +169,10 @@ export default new Router({
                     path: 'trading_area',
                     name: 'tradingArea',
                     component: require('../components/tms/tradingArea.vue')
+                },{
+                    path: 'area_list',
+                    name: 'areaList',
+                    component: require('../components/tms/areaList.vue')
                 },{
                     path: 'data_hot',
                     name: 'dataHot',

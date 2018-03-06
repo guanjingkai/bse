@@ -5,6 +5,7 @@
 </template>
 <script>
 import Table from '../common/table';
+import CreateDelivery from './component/createDelivery'
 export default {
   data() {
     return {
@@ -120,7 +121,8 @@ export default {
     }
   },
   components: {
-    "CommonTable": Table
+    "CommonTable": Table,
+    "CreateDelivery":CreateDelivery
   },
   mounted() {
     this.getData();

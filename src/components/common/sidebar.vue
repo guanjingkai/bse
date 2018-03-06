@@ -193,13 +193,13 @@
                       key:"wmsInput",
                       title:"销货出库",
                       childmenu:{
-                        wmsOutputWaitPick:mainMenuConfig['wmsOutputWaitPick'],
-                        wmsOutputWave:mainMenuConfig['wmsOutputWave'],
                         wmsOutputPickList:mainMenuConfig['wmsOutputPickList'],
                         wmsOutputPick:mainMenuConfig['wmsOutputPick'],
-                        wmsOutputPack:mainMenuConfig['wmsOutputPack'],
+                        //wmsOutputPack:mainMenuConfig['wmsOutputPack'],
                         wmsOutputDo:mainMenuConfig['wmsOutputDo'],
-                        wmsOutputList:mainMenuConfig['wmsOutputList']
+                        //wmsOutputList:mainMenuConfig['wmsOutputList'],
+                        //wmsOutputWaitPick:mainMenuConfig['wmsOutputWaitPick'],
+                        //wmsOutputWave:mainMenuConfig['wmsOutputWave'],
                       }
                     },
                     wmsStrategy:{
@@ -220,7 +220,7 @@
                       title:"基础档案",
                       childmenu:{
                         tmsFileCarrier:mainMenuConfig['tmsFileCarrier'],
-                        tmsFileDriver:mainMenuConfig['tmsFileDriver']
+                        // tmsFileDriver:mainMenuConfig['tmsFileDriver']
                       }
                     },
                     tmsOrder:{
@@ -228,14 +228,8 @@
                       title:"订单中心",
                       childmenu:{
                         tmsOrderWait:mainMenuConfig['tmsOrderWait'],
-                        tmsDelivery:mainMenuConfig['tmsDelivery']
-                      }
-                    },
-                    tmsTraffic:{
-                      key:"tmsTraffic",
-                      title:"运输中心",
-                      childmenu:{
-                        tmsTradingArea:mainMenuConfig['tmsTradingArea']
+                        tmsDelivery:mainMenuConfig['tmsDelivery'],
+                        tmsAreaList:mainMenuConfig['tmsAreaList']
                       }
                     },
                     tmsData:{
@@ -243,6 +237,13 @@
                       title:"数据中心",
                       childmenu:{
                         tmsDataHot:mainMenuConfig['tmsDataHot']
+                      }
+                    },
+                    tmsTraffic:{
+                      key:"tmsTraffic",
+                      title:"运输设置",
+                      childmenu:{
+                        tmsTradingArea:mainMenuConfig['tmsTradingArea']
                       }
                     }
                   }

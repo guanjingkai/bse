@@ -2,13 +2,16 @@
   <div>
     <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig">
       <div slot="customAciton">
-          <Button type="primary" icon="ios-refresh-empty" @click="openCreateWave(true)">新建司机</Button>  
+          <Button type="primary" icon="ios-refresh-empty" @click="openCreateDriver(true)">新建司机</Button>  
       </div>
     </CommonTable>
+    <CreateDriver :modalShow="openCreateDriverShow" @create-driver-show="openCreateDriver"></CreateDriver>
+  
   </div>
 </template>
 <script>
 import Table from '../common/table';
+import CreateDriver from './component/createDriver';
 export default {
   data() {
     return {
@@ -112,11 +115,13 @@ export default {
           }
 
         }
-      ]
+      ],
+      openCreateDriverShow:false
     }
   },
   components: {
-    "CommonTable": Table
+    "CommonTable": Table,
+    "CreateDriver":CreateDriver
   },
   mounted() {
     this.getData();
@@ -130,6 +135,9 @@ export default {
       }, response => {
         // error callback
       })
+    },
+    openCreateDriver(isShow){
+      this.openCreateDriverShow = isShow;
     },
     testFunction(){
       this.openPage('home1','sdifk1');

@@ -24,8 +24,10 @@
           <Checkbox v-for="(checkbox,key) in item.value" :label="checkbox.value"></Checkbox>
         </Checkbox-group>
         <DatePicker  v-if="item.type == 'date-time-range'" type="datetimerange" :placeholder="'请选择'+item.title" v-model="thisFormValidate[item.key]" style="max-width: 360px"></DatePicker>
+        <DatePicker  v-if="item.type == 'date-time'" type="datetime" :placeholder="'请选择'+item.title" v-model="thisFormValidate[item.key]" style="max-width: 360px"></DatePicker>
         <TimePicker  v-if="item.type == 'time-range'" type="timerange" :placeholder="'请选择'+item.title" v-model="thisFormValidate[item.key]" format="HH’mm’ss" :placement="thisFormValidate[item.placement]"  style="max-width: 360px"></TimePicker>
-        <Row v-if="item.type == 'date-time'">
+        <TimePicker  v-if="item.type == 'time'" type="time" :placeholder="'请选择'+item.title" v-model="thisFormValidate[item.key]" format="HH’mm’ss" :placement="thisFormValidate[item.placement]"  style="max-width: 360px"></TimePicker>
+        <!-- <Row v-if="item.type == 'date-time'">
           <Col span="11">
           <Form-item :prop="item.key">
             <Date-picker type="date" :placeholder="'请选择'+item.title" v-model="thisFormValidate[item.key]"></Date-picker>
@@ -37,7 +39,7 @@
             <Time-picker type="time" :placeholder="'请选择'+item.title" v-model="thisFormValidate[item.key]"></Time-picker>
           </Form-item>
           </Col>
-        </Row>
+        </Row> -->
         <i-switch size="large" v-model="thisFormValidate[item.key]" v-if="item.type == 'switch'">
           <span slot="open">开启</span>
           <span slot="close">关闭</span>
@@ -52,14 +54,15 @@
         <Upload  v-if="item.type == 'upload-file'" action="//jsonplaceholder.typicode.com/posts/">
           <Button type="ghost" icon="ios-cloud-upload-outline">上传文件</Button>
         </Upload>
+        <al-cascader v-if="item.type == 'area-cascader'" v-model="thisFormValidate[item.key]" :level="item.level" :placeholder="'请选择'+item.title"/>
+        <al-selector v-if="item.type == 'area-select'" v-model="thisFormValidate[item.key]" :level="item.level" :placeholder="'请选择'+item.title"/> 
         <BaiduMap v-if="item.type == 'bmap-edit'" :component-key="item.key"></BaiduMap>
         <MdEditor v-if="item.type == 'md-edit'"></MdEditor>
         <!--动态组件传递-->
         <component v-if="item.type == 'component'" :is="otherComponent[item.key]"></component>
       </Form-item>
       </Col>
-      <Col span="24">
-      <Form-item>
+      <Col span="24"  v-if="isAction">
         <div class="actionButtons">
           <Button v-if="formAction" type="success" @click="handleSubmit('thisFormValidate')">保存关闭</Button>
           <Button type="primary" v-if="this.type == 'own' && formAction" @click="handleSubmit('thisFormValidate')">保存新增</Button>
@@ -67,7 +70,6 @@
           <Button v-if="formAction" type="ghost" @click="handleReset('thisFormValidate')" style="margin-left: 8px" icon="ios-refresh-empty" shape="circle"></Button>
           <slot name="customAciton"></slot>
         </div>
-      </Form-item>
       </Col>
     </Row>
     </Form>
@@ -115,6 +117,10 @@
                   return {}
               }
           },formAction: {
+              default: function () {
+                  return true
+              }
+          },isAction: {
               default: function () {
                   return true
               }
@@ -214,7 +220,7 @@
 }
 .actionButtons{
   width:220px;
-  margin:auto;
+  margin:0px auto 24px auto;
 }
 .form-reset{
   position: absolute;

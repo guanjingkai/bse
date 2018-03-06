@@ -1,8 +1,8 @@
 <template>
   <div style="width:100%;height:100%;">
     <Row style="width:100%;height:40px;">    
-      <Col span=6 style="margin-right:10px;">
-        <al-cascader v-model="resArr" level="3"/>
+      <Col span=10 style="margin-right:10px;">
+        <al-selector v-model="resArr" level="2"/>
       </Col>
       <Button type="primary">定位</Button>
     </Row>
@@ -13,11 +13,7 @@
       <Input v-model="value" disabled placeholder="蜂窝ID:F1013" style="width: 100px"></Input>
       <Input v-model="value" placeholder="蜂窝名称" style="width: 150px"></Input>
       <Input v-model="value" disabled placeholder="覆盖点位:131" style="width: 100px"></Input>
-      <Select v-model="model8" placeholder="发货仓库" style="width:100px" placement="top">       
-            <Option value="海淀仓">中关村仓</Option>
-            <Option value="朝阳仓">朝阳仓</Option>
-      </Select>
-      <Select v-model="model7" placeholder="承运商" style="width:100px" placement="top">
+      <Select v-model="model7" style="width:100px" placement="top">
         <OptionGroup label="落地配">
             <Option value="宅急送">宅急送</Option>
             <Option value="达达">达达</Option>
@@ -44,13 +40,12 @@ export default {
   },
   mounted() {
     var map = new BMap.Map('mymap');
-    var poi = new BMap.Point(116.307852,40.043319);
-    map.centerAndZoom(poi, 15);
+    var poi = new BMap.Point(116.307852,40.057031);
+    map.centerAndZoom(poi, 16);
     map.enableScrollWheelZoom();  
     var overlays = [];
 	  var overlaycomplete = function(e){
         overlays.push(e.overlay);
-        console.log(overlays);
     };
     var styleOptions = {
         strokeColor:"green",    //边线颜色。
@@ -91,29 +86,6 @@ export default {
     }
     //最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。
     var markerClusterer = new BMapLib.MarkerClusterer(map, {markers:markers});
-    var polygon = new BMap.Polygon([
-      new BMap.Point(116.274327,40.044328),
-      new BMap.Point(116.278639,40.044881),
-      new BMap.Point(116.27792,40.047808),
-      new BMap.Point(116.292868,40.049851),
-      new BMap.Point(116.293587,40.046758),
-      new BMap.Point(116.303504,40.048471),
-      new BMap.Point(116.308247,40.050514),
-      new BMap.Point(116.314787,40.052337),
-      new BMap.Point(116.317877,40.047587),
-      new BMap.Point(116.321542,40.043113),
-      new BMap.Point(116.32801,40.036319),
-      new BMap.Point(116.319746,40.035214),
-      new BMap.Point(116.320033,40.03212),
-      new BMap.Point(116.307888,40.031236),
-      new BMap.Point(116.304798,40.04013),
-      new BMap.Point(116.294306,40.04013),
-      new BMap.Point(116.288413,40.04002),
-      new BMap.Point(116.283526,40.039412),
-      new BMap.Point(116.279789,40.038473),
-      new BMap.Point(116.274327,40.044328)
-    ], {strokeColor:"blue",fillColor:"blue", strokeWeight:3, strokeOpacity:0.5,fillOpacity:0.3});
-    map.addOverlay(polygon); 
   },
   methods: {
     

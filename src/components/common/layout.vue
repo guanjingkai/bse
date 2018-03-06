@@ -10,7 +10,7 @@
         </i-col>
         <i-col class-name="header-center">
           <div class="layout-nav">
-            <Menu-item name="1">
+            <!-- <Menu-item name="1">
               <Icon type="ios-keypad"></Icon>
               WMS仓储管理
             </Menu-item>
@@ -29,11 +29,11 @@
             <Menu-item name="5">
                 <Icon type="ios-paper"></Icon>
                 OMS订单管理
-              </Menu-item>
-              <Menu-item name="6">
-                  <Icon type="pull-request"></Icon>
-                 SCM供应链管理
-                </Menu-item>
+            </Menu-item>
+            <Menu-item name="6">
+                <Icon type="pull-request"></Icon>
+                SCM供应链管理
+            </Menu-item> -->
           </div>
         </i-col>
         <i-col class-name="header-right">

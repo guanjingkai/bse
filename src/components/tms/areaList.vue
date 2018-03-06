@@ -1,29 +1,34 @@
 <template>
   <div>
     <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig">
-      <div slot="customAciton">
-          <Button type="primary" icon="ios-refresh-empty" @click="openCreateCarrier(true)">创建承运商</Button>  
-      </div>
+    
     </CommonTable>
-    <CreateCarrier :modalShow="openCreateCarrierShow" @create-carrier-show="openCreateCarrier"></CreateCarrier>
+    <CreateDelivery :modalShow="openCreateDeliveryShow" @create-delivery-show="openCreateDelivery"></CreateDelivery>
   </div>
 </template>
 <script>
 import Table from '../common/table';
-import CreateCarrier from './component/createCarrier';
+import CreateDelivery from './component/createDelivery';
 export default {
   data() {
     return {
       self: this,
       api: {
-        url: "/tms/carrier/list"
+        url: "/tms/area/list"
       },
       searchConfig:{
         orderId:{
-          title:'承运商ID',
+          title:'蜂窝ID',
           key:'orderId',
           type:'input',
-          width:150,
+          width:100,
+          value:''
+        },
+        nameaaa:{
+          title:'蜂窝名称',
+          key:'nameaaa',
+          type:'input',
+          width:100,
           value:''
         },
         area:{
@@ -34,63 +39,50 @@ export default {
           width:150,
           value:''
         },
-        nameaaa:{
-          title:'承运商名称',
-          key:'nameaaa',
-          type:'input',
-          width:150,
-          value:''
-        },
         payTools:{
-          title:'类型',
+          title:'承运商',
           key:'payType',
           type:'select',
-          data:[{ key: "canyin", value: "落地配" }, { key: "ertong", value: "平台" }],
+          data:[{ key: "canyin", value: "云鸟" }, { key: "ertong", value: "达达" }, { key: "ertong1", value: "宅急送" }, { key: "ertong12", value: "无承运商" }],
           width:100,
           value:''
         },
-        payTools1:{
-          title:'状态',
-          key:'payType1',
-          type:'select',
-          data:[{ key: "canyin", value: "可用" }, { key: "ertong", value: "停用" }],
-          width:100,
+        createOrder:{
+          title:'最后配送',
+          key:'createOrder',
+          type:'date-time',
+          width:180,
           value:''
-        },
+        }
       },
       tableData: [],
       tableColumns: [
         {
-          title: 'ID',
-          key: 'carrierId',
+            type: 'selection',
+            width: 60,
+            align: 'center'
+        },
+        {
+          title: '蜂窝ID',
+          key: 'id',
         }, {
-          title: '名称',
-          key: 'name',
+          title: '蜂窝信息',
+          key: 'poiName',
+          width:200,
         }, {
-          title: '类型',
-          key: 'type'
+          title: '承运商',
+          key: 'carrierName'
         }, {
-          title: '所属仓库',
-          key: 'wmsName',
-          width:140
-        }, {
-          title: '负责蜂窝',
-          key: 'areaNumber',
-        }, {
-          title: '覆盖点位',
+          title: '点位数量',
           key: 'poiNumber',
         }, {
-          title: '补货次数',
+          title: '待确认订单',
           key: 'addNumber',
+        },{
+          title: '下单时间',
+          key: 'lastTime'
         }, {
-          title: '运力',
-          key: 'capacity',
-        }, {
-          title: '最后运输',
-          key: 'lastTime',
-          width:150,
-        }, {
-          title: '状态',
+          title: '昨日状态',
           key: 'state',
           render: (h, params) => {
               return h('div', [
@@ -107,13 +99,13 @@ export default {
                               
                           }
                       }
-                  }, '可用')
+                  }, '待配送')
               ]);
           }
         }, {
           title: '操作',
           key: 'brandStatus',
-          width: 120,
+          width: 180,
           fixed: 'right',
           render: (h, params) => {
             return h('div', [
@@ -124,27 +116,32 @@ export default {
                 },
                 on:{
                   click:()=>{
-                    this.testFunction()
+                    this.openCreateDelivery(true)
                   }
                 }
-              }, '停用'),
+              }, '生成物流单'),
               h('Button', {
                 props: {
                   type: 'text',
                   size: 'small'
+                },
+                on:{
+                  click:()=>{
+                    this.createTradingArea()
+                  }
                 }
-              }, '编辑')
+              }, '编辑区域')
             ]);
           }
 
         }
       ],
-      openCreateCarrierShow:false
+      openCreateDeliveryShow:false
     }
   },
   components: {
     "CommonTable": Table,
-    "CreateCarrier":CreateCarrier
+    "CreateDelivery":CreateDelivery
   },
   mounted() {
     this.getData();
@@ -159,12 +156,23 @@ export default {
         // error callback
       })
     },
-    openCreateCarrier(isShow){
-      this.openCreateCarrierShow = isShow;
+    createTradingArea(){
+      const _self = this;
+      _self.openPage("蜂窝网络","tmsTradingArea","/tms/trading_area");
+      //console.log(_self.$store.state.model.menu[name].path);
+      //this.router.push({ path: _self.$store.state.model.menu[name].path })
+      console.log(item);
+      
     },
     testFunction(){
       this.openPage('home1','sdifk1');
       alert(123)
+    },
+    openCreateDelivery(isShow){
+      this.openCreateDeliveryShow = isShow;
+    },
+    addDelivery(){
+      this.$Message.success('您选择的配送等你以加入手工物流列队中。');
     }
   }
 }

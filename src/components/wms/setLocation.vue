@@ -224,25 +224,28 @@
           {
             title: '库位名称',
             key: 'locationName',
+            width: 120,
           }, {
             title: '通道',
             width: 60,
             key: 'pass',
           }, {
             title: '库位编码',
-            key: 'locationNumber'
+            key: 'locationNumber',
+            width: 100,
           },  {
             title: '库区模板',
             key: 'locationTemplate',
           },  {
             title: '容积(㎡)',
             sortable: true,
+            width: 100,
             key: 'volume'
           }, {
             title: '当前用量',
             sortable: true,
             key: 'nowVolume',
-            width: 200,
+            width: 160,
             render: (h, params) => {
               let status;
               if(params.row.nowVolume>=0 && params.row.nowVolume < 60){
@@ -274,7 +277,7 @@
             title: '当前负载',
             sortable: true,
             key: 'nowBear',
-            width: 200,
+            width: 160,
             render: (h, params) => {
               let status;
               if(params.row.nowBear>=0 && params.row.nowBear < 60){
