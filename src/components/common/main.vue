@@ -73,6 +73,9 @@ export default {
   components:{
     'ModelItem':ModelItem
   },
+  mounted: function () {
+    this.openPage("承运商档案","tmsFileCarrier","/tms/file_carrier");
+  },
   data () {
     return {
       

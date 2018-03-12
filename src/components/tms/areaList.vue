@@ -119,7 +119,7 @@ export default {
                     this.openCreateDelivery(true)
                   }
                 }
-              }, '生成物流单'),
+              }, '生成运输单'),
               h('Button', {
                 props: {
                   type: 'text',

@@ -182,7 +182,6 @@
     background-color: #9f9f9f;
     -webkit-border-radius: 4px;
   }
-
   .bse-title {
     color: #fff;
     font-size: 18px;

@@ -1,7 +1,7 @@
 <template>
     <Modal v-model="modalShow" title="运输单列队" okText='生成运输单' @on-ok="ok" @on-cancel="cancel" width="850">
         <CommonForm :parameter="parameter" :formValidate="formValidate" :formAction="formAction" :isAction="isAction"  :gridSpan="gridSpan"></CommonForm>
-        <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig">
+        <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData" :searchConfig="searchConfig" autoHeight="400">
       
         </CommonTable>
     </Modal>

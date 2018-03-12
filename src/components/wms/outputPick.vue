@@ -21,14 +21,16 @@
     </Col>
     <Col span="18">
       <Tabs type="card" :animated="false">
-        <TabPane v-for="tab in tabs" :key="tab" :label="tab + '号分捡箱 FJX1000' + tab">
+        <TabPane :label="tabsLabel">
           <DoPick></DoPick>
+          <CommonTable :api="api" :tableColumns="tableColumns2" :tableData="tableData"></CommonTable>
+        </TabPane>
+        <TabPane v-for="tab in tabs" :key="tab" :label="tab + '号分捡箱 FJX1000' + tab">
+          
           <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData"></CommonTable>
         </TabPane>
         
-        <TabPane :label="tabsLabel">
-          <CommonTable :api="api" :tableColumns="tableColumns2" :tableData="tableData"></CommonTable>
-        </TabPane>
+        
         
         <Button type="ghost" @click="handleTabsAdd" size="small" slot="extra">增加分捡箱</Button>
     </Tabs>
@@ -75,6 +77,12 @@ export default {
             title: "",
             type: "formGroupTitle",
             value: "扫码商品(自动识别国际条码)"
+        },
+        sku619: {
+            key: "sku619",
+            title: "容器ID",
+            type: "input",
+            rule: [{required: true, message: '容器ID不能为空', trigger: 'blur'}]
         },
         sku69: {
             key: "sku69",
@@ -138,18 +146,24 @@ export default {
           key: 'sku',
           }, {
           title: '商品名称',
-          key: 'goodsName',
-          width:140
+          key: 'goodsName'
           }, {
           title: '批次编号',
           key: 'number',
           }, {
           title: '生产日期',
-          key: 'createTime',
-          width:160
+          key: 'createTime'
           }, {
           title: '供应商',
           key: 'supplierName',
+          },{
+          title: '容器',
+          key: 'rongqi',
+          render: (h, params) => {
+              return h('div', [
+              h('span', {}, '01-J1-A2-01')
+              ]);
+          }
           },{
           title: '待分拣数量',
           key: 'waitNumber',

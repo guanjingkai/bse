@@ -50,6 +50,22 @@ export default {
           width:100,
           value:''
         },
+        femgwo:{
+          title:'蜂窝',
+          key:'femgwo',
+          type:'select',
+          data:[{ key: "canyin", value: "褡裢坡" }, { key: "ertong", value: "海淀黄庄" }, { key: "ertong1", value: "朝悦" }],
+          width:100,
+          value:''
+        },
+        payTools1:{
+          title:'分拣状态',
+          key:'payType',
+          type:'select',
+          data:[{ key: "canyin", value: "已分拣" }, { key: "ertong", value: "未分拣" }, { key: "ertong1", value: "全部" }],
+          width:100,
+          value:''
+        },
         createOrder:{
           title:'下单时间',
           key:'createOrder',
@@ -73,6 +89,32 @@ export default {
           key: 'poiName',
           width:200,
         }, {
+          title: '备注',
+          key: 'remark',
+          width:200,
+          render: (h, params) => {
+              let status;
+              if(params.row.remark == 1){
+                return h('div', [
+                  h('Button', {
+                      props: {
+                          type: 'success',
+                          size: 'small'
+                      },
+                      style: {
+                          marginRight: '5px'
+                      },
+                      on: {
+                          click: () => {
+                              
+                          }
+                      }
+                  }, '收铺')
+                ]);
+              }
+              
+            }
+        }, {
           title: '承运商',
           key: 'carrierName'
         }, {
@@ -82,13 +124,36 @@ export default {
           title: '货物数量',
           key: 'addNumber',
         },{
+          title: '创建人',
+          key: 'createUser'
+        },{
           title: '下单时间',
           key: 'lastTime'
         }, {
           title: '状态',
-          key: 'state',
+          key: 'zhuangtai',
+          width:200,
           render: (h, params) => {
-              return h('div', [
+              let status;
+              if(params.row.remark == 1){
+                return h('div', [
+                  h('Button', {
+                      props: {
+                          type: 'success',
+                          size: 'small'
+                      },
+                      style: {
+                          marginRight: '5px'
+                      },
+                      on: {
+                          click: () => {
+                              
+                          }
+                      }
+                  }, '已分拣')
+                ]);
+              }else{
+                return h('div', [
                   h('Button', {
                       props: {
                           type: 'primary',
@@ -102,9 +167,11 @@ export default {
                               
                           }
                       }
-                  }, '代配送')
-              ]);
-          }
+                  }, '未分拣')
+                ]);
+              }
+              
+            }
         }, {
           title: '操作',
           key: 'brandStatus',

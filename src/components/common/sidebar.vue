@@ -228,8 +228,8 @@
                       title:"订单中心",
                       childmenu:{
                         tmsOrderWait:mainMenuConfig['tmsOrderWait'],
-                        tmsDelivery:mainMenuConfig['tmsDelivery'],
-                        tmsAreaList:mainMenuConfig['tmsAreaList']
+                        tmsAreaList:mainMenuConfig['tmsAreaList'],
+                        tmsDelivery:mainMenuConfig['tmsDelivery']
                       }
                     },
                     tmsData:{

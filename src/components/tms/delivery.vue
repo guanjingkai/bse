@@ -49,18 +49,24 @@ export default {
         {
           title: '发货单ID',
           key: 'id',
+          fixed: 'left',
+           width:100,
         }, {
           title: '承运商',
-          key: 'carrierName'
+          key: 'carrierName',
+           width:100,
         }, {
           title: '运输箱',
           key: 'packageNumber',
+           width:100,
         }, {
           title: '下单时间',
-          key: 'lastTime'
+          key: 'lastTime',
+          width: 180,
         }, {
-          title: '发货时间',
-          key: 'pullTime'
+          title: '发车时间',
+          key: 'pullTime',
+          width: 180,
         }, {
           title: '进度',
           key: 'nowBear',
@@ -91,6 +97,7 @@ export default {
         },{
           title: '状态',
           key: 'state',
+          width:100,
           render: (h, params) => {
               return h('div', [
                   h('Button', {
@@ -112,7 +119,7 @@ export default {
         }, {
           title: '操作',
           key: 'brandStatus',
-          width: 160,
+          width: 180,
           fixed: 'right',
           render: (h, params) => {
             return h('div', [
@@ -123,10 +130,10 @@ export default {
                 },
                 on:{
                   click:()=>{
-                    this.$Message.success('发货成功');
+                    this.$Message.success('确认成功');
                   }
                 }
-              }, '发货'),
+              }, '确认发车'),
               h('Button', {
                 props: {
                   type: 'text',
