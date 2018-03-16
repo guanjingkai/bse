@@ -26,7 +26,10 @@
           <CommonTable :api="api" :tableColumns="tableColumns2" :tableData="tableData"></CommonTable>
         </TabPane>
         <TabPane v-for="tab in tabs" :key="tab" :label="tab + '号分捡箱 FJX1000' + tab">
-          
+          <Row style="margin-top:15px;">
+            <Input v-model="value" disabled placeholder="分拣箱编码:FJX10001" style="width: 150px;margin-left:15px;"></Input>
+            <Button type="primary">重新绑定</Button>
+        </Row>
           <CommonTable :api="api" :tableColumns="tableColumns" :tableData="tableData"></CommonTable>
         </TabPane>
         
@@ -148,20 +151,20 @@ export default {
           title: '商品名称',
           key: 'goodsName'
           }, {
-          title: '批次编号',
-          key: 'number',
-          }, {
-          title: '生产日期',
-          key: 'createTime'
-          }, {
-          title: '供应商',
-          key: 'supplierName',
-          },{
           title: '容器',
           key: 'rongqi',
           render: (h, params) => {
               return h('div', [
               h('span', {}, '01-J1-A2-01')
+              ]);
+          }
+          },{
+          title: '已经分拣数量',
+          key: 'waitNumber',
+          width: 120,
+          render: (h, params) => {
+              return h('div', [
+              h('span', {}, '1(6)')
               ]);
           }
           },{

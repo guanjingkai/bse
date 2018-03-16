@@ -14,7 +14,7 @@ export default {
       },
       searchConfig:{
         orderId:{
-          title:'发货单ID',
+          title:'运输单ID',
           key:'orderId',
           type:'input',
           width:150,
@@ -47,7 +47,7 @@ export default {
       tableData: [],
       tableColumns: [
         {
-          title: '发货单ID',
+          title: '运输单ID',
           key: 'id',
           fixed: 'left',
            width:100,
@@ -81,7 +81,7 @@ export default {
                 status = 'wrong';
               }
               return h('div', [
-                h('Progress', {
+                h('Button', {
                   props: {
                     percent: params.row.nowBear,
                     status: status
@@ -91,7 +91,7 @@ export default {
                       
                     }
                   }
-                }, params.row.nowBear+"%")
+                }, params.row.nowBear+"/100")
               ]);
             }
         },{
@@ -119,7 +119,7 @@ export default {
         }, {
           title: '操作',
           key: 'brandStatus',
-          width: 180,
+          width: 140,
           fixed: 'right',
           render: (h, params) => {
             return h('div', [
@@ -134,12 +134,6 @@ export default {
                   }
                 }
               }, '确认发车'),
-              h('Button', {
-                props: {
-                  type: 'text',
-                  size: 'small'
-                }
-              }, '打印'),
               h('Button', {
                 props: {
                   type: 'text',

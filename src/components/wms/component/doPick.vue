@@ -14,10 +14,8 @@
         </Row>
         
         <Row style="margin-top:15px;">
-            <Input v-model="value" disabled placeholder="分拣箱编码:FJX10001" style="width: 150px;margin-left:15px;"></Input>
-            <Button type="primary">重新绑定</Button>
 
-            <Button type="primary" icon="filing" style="float:right">加入当前分拣箱</Button>
+            <Button type="primary" icon="filing" style="float:right">加入当前分拣箱(1)</Button>
         </Row>
     </div>
 </template>
